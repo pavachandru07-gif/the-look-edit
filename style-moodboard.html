@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Style Moodboard | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #64243c;
+    --rose: #d49aaa;
+    --cream: #faf6f2;
+    --ink: #30272c;
+    --muted: #887b81;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+nav {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: white;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: var(--wine);
+}
+
+nav a {
+    text-decoration: none;
+    color: #51464c;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+
+nav a:hover {
+    color: var(--rose);
+}
+
+.hero {
+    background: #4c2336;
+    color: white;
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.hero small {
+    color: #e5b6c6;
+    letter-spacing: 4px;
+    font-size: 10px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 75px);
+    font-weight: 400;
+    margin: 18px 0;
+}
+
+.hero p {
+    max-width: 540px;
+    margin: auto;
+    color: #eadce1;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.container {
+    padding: 60px 8%;
+}
+
+.heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.subheading {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+/* CREATE FORM */
+
+.create-section {
+    background: white;
+    padding: 30px;
+    margin-top: 30px;
+    border: 1px solid #eee2e6;
+}
+
+.create-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e6d9de;
+    background: #fdfbfa;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--wine);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    margin-top: 15px;
+}
+
+.add-btn {
+    background: var(--wine);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    margin-top: 15px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+
+.add-btn:hover {
+    background: #8b3b59;
+}
+
+.note {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 10px;
+}
+
+/* FILTERS */
+
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 55px 0 25px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    border: 1px solid #ddcbd2;
+    background: transparent;
+    color: #705b64;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--wine);
+    color: white;
+}
+
+/* MOODBOARD GRID */
+
+.moodboard {
+    columns: 3;
+    column-gap: 20px;
+}
+
+.mood-card {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    background: white;
+    break-inside: avoid;
+    border: 1px solid #eee6e8;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.mood-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #4c233615;
+}
+
+.mood-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 390px;
+}
+
+.card-content {
+    padding: 17px;
+}
+
+.card-category {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a76d81;
+}
+
+.card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 8px 0;
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.card-actions button {
+    border: none;
+    cursor: pointer;
+    background: #f6edf0;
+    color: var(--wine);
+    padding: 9px 12px;
+    font-size: 10px;
+}
+
+.card-actions button:hover {
+    background: var(--wine);
+    color: white;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 50px;
+    color: var(--muted);
+}
+
+/* COLOUR PALETTE */
+
+.palette-section {
+    background: #eee3e8;
+    padding: 60px 8%;
+    margin-top: 20px;
+}
+
+.palette-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.palette-section p {
+    font-size: 12px;
+    color: #77666d;
+    margin: 10px 0 25px;
+}
+
+.palettes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.palette {
+    background: white;
+    padding: 12px;
+}
+
+.swatches {
+    display: flex;
+    height: 85px;
+}
+
+.swatches span {
+    flex: 1;
+}
+
+.palette h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 12px;
+}
+
+footer {
+    background: #321521;
+    color: #e9cbd5;
+    text-align: center;
+    padding: 30px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 800px) {
+    .moodboard {
+        columns: 2;
+    }
+
+    .palettes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 500px) {
+    .moodboard {
+        columns: 1;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">THE LOOK EDIT.</div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <small>A LITTLE SPACE FOR INSPIRATION</small>
+    <h1>The Style Moodboard</h1>
+    <p>
+        Collect the looks you love. Save the colours that inspire you.
+        Build a visual world that feels completely your own.
+    </p>
+</header>
+
+<main class="container">
+
+    <h2 class="heading">Your Creative Space</h2>
+
+    <p class="subheading">
+        A collection of outfits, textures, details and little things
+        that make up your personal style.
+    </p>
+
+    <section class="create-section">
+
+        <h3>Add to Your Moodboard ♡</h3>
+
+        <div class="form-grid">
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Give your inspiration a title"
+            >
+
+            <select id="category">
+                <option value="Outfits">Outfits</option>
+                <option value="Aesthetics">Aesthetics</option>
+                <option value="Colours">Colours</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input
+                type="url"
+                id="imageUrl"
+                placeholder="Paste an image URL"
+            >
+
+            <input
+                type="text"
+                id="tags"
+                placeholder="Add keywords (e.g. minimal, vintage)"
+            >
+
+        </div>
+
+        <textarea
+            id="description"
+            placeholder="Write a little note about this inspiration..."
+        ></textarea>
+
+        <button class="add-btn" onclick="addInspiration()">
+            + ADD TO MY BOARD
+        </button>
+
+        <p class="note">
+            Use a publicly accessible image URL. Your board is saved in this browser.
+        </p>
+
+    </section>
+
+    <div class="board-header">
+        <div>
+            <h2 class="heading">The Inspiration Wall</h2>
+            <p class="subheading">A visual diary of everything you love.</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="All">ALL</button>
+            <button class="filter-btn" data-filter="Outfits">OUTFITS</button>
+            <button class="filter-btn" data-filter="Aesthetics">AESTHETICS</button>
+            <button class="filter-btn" data-filter="Colours">COLOURS</button>
+            <button class="filter-btn" data-filter="Accessories">ACCESSORIES</button>
+            <button class="filter-btn" data-filter="Beauty">BEAUTY</button>
+        </div>
+    </div>
+
+    <div class="moodboard" id="moodboard"></div>
+
+    <div class="empty-message" id="emptyMessage">
+        Nothing here yet. Add something beautiful to your board ♡
+    </div>
+
+</main>
+
+<section class="palette-section">
+
+    <h2>Colour Stories</h2>
+
+    <p>
+        A few palettes to inspire your next outfit, mood or creative direction.
+    </p>
+
+    <div class="palettes">
+
+        <div class="palette">
+            <div class="swatches">
+                <span style="background:#641e35"></span>
+                <span style="background:#a44f6b"></span>
+                <span style="background:#d99aaa"></span>
+                <span style="background:#f2dce2"></span>
+            </div>
+            <h4>Romantic Burgundy</h4>
+        </div>
+
+        <div class="palette">
+            <div class="swatches">
+                <span style="background:#172b45"></span>
+                <span style="background:#52677e"></span>
+                <span style="background:#aab9c5"></span>
+                <span style="background:#e8e3dc"></span>
+            </div>
+            <h4>Quiet Luxury</h4>
+        </div>
+
+        <div class="palette">
+            <div class="swatches">
+                <span style="background:#164b3c"></span>
+                <span style="background:#527b66"></span>
+                <span style="background:#b5c7ae"></span>
+                <span style="background:#e8e5d8"></span>
+            </div>
+            <h4>Garden Tones</h4>
+        </div>
+
+        <div class="palette">
+            <div class="swatches">
+                <span style="background:#30213f"></span>
+                <span style="background:#765c89"></span>
+                <span style="background:#b7a4c8"></span>
+                <span style="background:#e9dfe9"></span>
+            </div>
+            <h4>Midnight Lavender</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    THE LOOK EDIT. &nbsp; | &nbsp; YOUR STYLE, YOUR STORY.
+</footer>
+
+<script>
+
+const defaultItems = [
+    {
+        id: 1,
+        title: "The Art of Effortless Dressing",
+        category: "Outfits",
+        description: "Relaxed tailoring, soft neutrals and pieces that never feel overdone.",
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800",
+        tags: "minimal, everyday"
+    },
+    {
+        id: 2,
+        title: "A Little Parisian Mood",
+        category: "Aesthetics",
+        description: "Classic silhouettes, muted colours and a hint of romance.",
+        image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800",
+        tags: "classic, romantic"
+    },
+    {
+        id: 3,
+        title: "The Statement Bag",
+        category: "Accessories",
+        description: "Sometimes one beautiful accessory is all an outfit needs.",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800",
+        tags: "accessories, luxury"
+    },
+    {
+        id: 4,
+        title: "Soft Beauty",
+        category: "Beauty",
+        description: "Fresh skin, understated makeup and a naturally polished finish.",
+        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800",
+        tags: "beauty, natural"
+    },
+    {
+        id: 5,
+        title: "A Study in Earth Tones",
+        category: "Colours",
+        description: "Warm browns, creamy beige and shades inspired by nature.",
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800",
+        tags: "earthy, neutral"
+    },
+    {
+        id: 6,
+        title: "Street Style Notes",
+        category: "Outfits",
+        description: "An easy mix of relaxed proportions and confident details.",
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800",
+        tags: "streetwear, modern"
+    }
+];
+
+let savedItems = JSON.parse(
+    localStorage.getItem("styleMoodboard")
+);
+
+if (!Array.isArray(savedItems)) {
+    savedItems = defaultItems;
+    localStorage.setItem(
+        "styleMoodboard",
+        JSON.stringify(savedItems)
+    );
+}
+
+let activeFilter = "All";
+
+const moodboard = document.getElementById("moodboard");
+const emptyMessage = document.getElementById("emptyMessage");
+
+function renderBoard() {
+
+    moodboard.innerHTML = "";
+
+    const filteredItems = savedItems.filter(item =>
+        activeFilter === "All" || item.category === activeFilter
+    );
+
+    emptyMessage.style.display =
+        filteredItems.length === 0 ? "block" : "none";
+
+    filteredItems.forEach(item => {
+
+        const card = document.createElement("article");
+        card.className = "mood-card";
+
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = item.title;
+        image.loading = "lazy";
+
+        image.onerror = function() {
+            this.style.display = "none";
+        };
+
+        const content = document.createElement("div");
+        content.className = "card-content";
+
+        const category = document.createElement("span");
+        category.className = "card-category";
+        category.textContent = item.category;
+
+        const title = document.createElement("h3");
+        title.textContent = item.title;
+
+        const description = document.createElement("p");
+        description.textContent = item.description || "";
+
+        const actions = document.createElement("div");
+        actions.className = "card-actions";
+
+        const tags = document.createElement("span");
+        tags.style.fontSize = "10px";
+        tags.style.color = "#987d88";
+        tags.textContent = item.tags || "";
+
+        const remove = document.createElement("button");
+        remove.textContent = "REMOVE ×";
+
+        remove.addEventListener("click", () => {
+            deleteItem(item.id);
+        });
+
+        actions.append(tags, remove);
+        content.append(category, title, description, actions);
+        card.append(image, content);
+
+        moodboard.appendChild(card);
+    });
+}
+
+function addInspiration() {
+
+    const title = document.getElementById("title").value.trim();
+    const category = document.getElementById("category").value;
+    const image = document.getElementById("imageUrl").value.trim();
+    const description = document.getElementById("description").value.trim();
+    const tags = document.getElementById("tags").value.trim();
+
+    if (!title || !image) {
+        alert("Please add a title and an image URL.");
+        return;
+    }
+
+    try {
+        const parsed = new URL(image);
+
+        if (!["http:", "https:"].includes(parsed.protocol)) {
+            throw new Error("Invalid image URL");
+        }
+
+    } catch {
+        alert("Please enter a valid image URL.");
+        return;
+    }
+
+    const newItem = {
+        id: Date.now(),
+        title,
+        category,
+        image,
+        description,
+        tags
+    };
+
+    savedItems.unshift(newItem);
+
+    localStorage.setItem(
+        "styleMoodboard",
+        JSON.stringify(savedItems)
+    );
+
+    document.getElementById("title").value = "";
+    document.getElementById("imageUrl").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("tags").value = "";
+
+    activeFilter = "All";
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.filter === "All"
+        );
+    });
+
+    renderBoard();
+
+}
+
+function deleteItem(id) {
+
+    savedItems = savedItems.filter(item => item.id !== id);
+
+    localStorage.setItem(
+        "styleMoodboard",
+        JSON.stringify(savedItems)
+    );
+
+    renderBoard();
+}
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".filter-btn").forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        activeFilter = button.dataset.filter;
+
+        renderBoard();
+    });
+
+});
+
+renderBoard();
+
+</script>
+
+</body>
+</html>

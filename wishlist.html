@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wishlist Edit | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #632c43;
+    --rose: #e8c2c9;
+    --cream: #faf6f1;
+    --ink: #292027;
+    --muted: #897c82;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+header {
+    padding: 23px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    border-bottom: 1px solid #eadfe0;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--wine);
+    letter-spacing: 3px;
+    font-size: 25px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: var(--wine);
+}
+
+.hero {
+    padding: 90px 8%;
+    text-align: center;
+    background:
+        linear-gradient(120deg, #ead5d8, #e9ddec, #f2e8df);
+}
+
+.hero span {
+    color: var(--wine);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 7vw, 76px);
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.hero p {
+    color: #66565d;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.container {
+    padding: 65px 8%;
+}
+
+.heading {
+    margin-bottom: 30px;
+}
+
+.heading span {
+    color: var(--wine);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border: 1px solid #eee4e3;
+}
+
+.stat h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: var(--wine);
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.filter {
+    border: 1px solid #d9c9ce;
+    background: transparent;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 11px;
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+}
+
+.primary-btn {
+    border: none;
+    background: var(--wine);
+    color: white;
+    padding: 13px 22px;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.primary-btn:hover {
+    background: #431d2e;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 23px;
+}
+
+.wish-card {
+    background: white;
+    overflow: hidden;
+    border: 1px solid #eee4e3;
+}
+
+.wish-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    background: #eee4e3;
+}
+
+.wish-info {
+    padding: 20px;
+}
+
+.category-label {
+    color: var(--wine);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.wish-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wine);
+}
+
+.wish-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.wish-actions button,
+.wish-actions a {
+    padding: 9px 12px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.purchased-btn {
+    background: #e6eee5;
+    color: #3e6542;
+}
+
+.remove-btn {
+    background: #f5e6e8;
+    color: var(--wine);
+}
+
+.shop-btn {
+    background: var(--wine);
+    color: white;
+}
+
+.purchased-badge {
+    display: inline-block;
+    background: #e6eee5;
+    color: #3e6542;
+    font-size: 9px;
+    padding: 6px 9px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.empty {
+    grid-column: 1/-1;
+    background: white;
+    padding: 65px 20px;
+    text-align: center;
+    color: var(--muted);
+    line-height: 2;
+}
+
+.empty h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--wine);
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(25, 15, 22, .65);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--cream);
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 12px;
+    color: var(--wine);
+    margin-bottom: 8px;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dfd0d3;
+    background: white;
+    font-family: inherit;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.cancel-btn {
+    border: 1px solid #d8c5ca;
+    background: transparent;
+    color: var(--wine);
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+footer {
+    background: #292027;
+    color: white;
+    padding: 42px;
+    text-align: center;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+footer p {
+    color: #c9b9c0;
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+@media(max-width: 850px) {
+    .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .container {
+        padding: 45px 6%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE LOOK EDIT</div>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="screen-to-street.html">SCREEN TO STREET</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="outfit-planner.html">OUTFIT PLANNER</a>
+        <a href="style-calendar.html">STYLE CALENDAR</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span>A collection of little obsessions</span>
+    <h1>The Wishlist Edit.</h1>
+    <p>
+        Save the pieces you love, collect your inspiration
+        and keep a little list of things worth dreaming about.
+    </p>
+</section>
+
+<section class="container">
+
+    <div class="heading">
+        <span>Your personal collection</span>
+        <h2>Things we're loving.</h2>
+        <p>Every little find deserves a place on your wishlist.</p>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3 id="totalItems">0</h3>
+            <p>Saved favourites</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="totalPurchased">0</h3>
+            <p>Pieces purchased</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="totalRemaining">0</h3>
+            <p>Still on the wishlist</p>
+        </div>
+
+    </div>
+
+    <div class="toolbar">
+
+        <div class="filters">
+            <button class="filter active" data-filter="All">All</button>
+            <button class="filter" data-filter="Fashion">Fashion</button>
+            <button class="filter" data-filter="Beauty">Beauty</button>
+            <button class="filter" data-filter="Accessories">Accessories</button>
+            <button class="filter" data-filter="Lifestyle">Lifestyle</button>
+            <button class="filter" data-filter="Purchased">Purchased</button>
+        </div>
+
+        <button class="primary-btn" onclick="openModal()">
+            + ADD TO WISHLIST
+        </button>
+
+    </div>
+
+    <div class="wishlist-grid" id="wishlistGrid"></div>
+
+</section>
+
+<div class="modal" id="addModal">
+
+    <div class="modal-content">
+
+        <h2>Add a favourite.</h2>
+
+        <form id="wishlistForm">
+
+            <div class="field">
+                <label>Product name</label>
+                <input type="text" id="productName"
+                    placeholder="e.g. Burgundy shoulder bag" required>
+            </div>
+
+            <div class="field">
+                <label>Category</label>
+                <select id="productCategory">
+                    <option value="Fashion">Fashion</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Price (optional)</label>
+                <input type="number" id="productPrice"
+                    placeholder="Enter price" min="0">
+            </div>
+
+            <div class="field">
+                <label>Image URL</label>
+                <input type="url" id="productImage"
+                    placeholder="Paste an image link" required>
+            </div>
+
+            <div class="field">
+                <label>Shopping link (optional)</label>
+                <input type="url" id="productLink"
+                    placeholder="Paste product website link">
+            </div>
+
+            <div class="modal-actions">
+                <button type="submit" class="primary-btn">
+                    SAVE FAVOURITE
+                </button>
+
+                <button type="button" class="cancel-btn"
+                    onclick="closeModal()">CANCEL</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>A little inspiration goes a long way.</p>
+    <p>© 2026 THE LOOK EDIT</p>
+</footer>
+
+<script>
+
+let wishlist = JSON.parse(
+    localStorage.getItem("lookEditWishlist")
+) || [];
+
+let currentFilter = "All";
+
+const grid = document.getElementById("wishlistGrid");
+
+function saveWishlist() {
+    localStorage.setItem(
+        "lookEditWishlist",
+        JSON.stringify(wishlist)
+    );
+}
+
+function openModal() {
+    document.getElementById("addModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("addModal").style.display = "none";
+}
+
+document.getElementById("wishlistForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const item = {
+        id: Date.now(),
+        name: document.getElementById("productName").value.trim(),
+        category: document.getElementById("productCategory").value,
+        price: document.getElementById("productPrice").value,
+        image: document.getElementById("productImage").value.trim(),
+        link: document.getElementById("productLink").value.trim(),
+        purchased: false
+    };
+
+    wishlist.push(item);
+
+    saveWishlist();
+    renderWishlist();
+
+    this.reset();
+    closeModal();
+
+});
+
+function renderWishlist() {
+
+    grid.innerHTML = "";
+
+    let filtered = wishlist;
+
+    if (currentFilter === "Purchased") {
+        filtered = wishlist.filter(item => item.purchased);
+    } else if (currentFilter !== "All") {
+        filtered = wishlist.filter(item =>
+            item.category === currentFilter
+        );
+    }
+
+    if (filtered.length === 0) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                <h3>Your wishlist is waiting.</h3>
+                <p>Save something lovely to begin your collection.</p>
+            </div>
+        `;
+
+    }
+
+    filtered.forEach(item => {
+
+        const card = document.createElement("article");
+        card.className = "wish-card";
+
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.name;
+
+        img.onerror = function() {
+            this.src =
+                "https://placehold.co/600x600/f0e4e5/632c43?text=Image+Unavailable";
+        };
+
+        const info = document.createElement("div");
+        info.className = "wish-info";
+
+        const category = document.createElement("span");
+        category.className = "category-label";
+        category.textContent = item.category;
+
+        const name = document.createElement("h3");
+        name.textContent = item.name;
+
+        const price = document.createElement("p");
+        price.className = "price";
+        price.textContent = item.price
+            ? "₹" + Number(item.price).toLocaleString("en-IN")
+            : "Price not added";
+
+        info.append(category, name, price);
+
+        if (item.purchased) {
+            const badge = document.createElement("span");
+            badge.className = "purchased-badge";
+            badge.textContent = "PURCHASED";
+            info.appendChild(badge);
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "wish-actions";
+
+        if (item.link) {
+            const shop = document.createElement("a");
+            shop.className = "shop-btn";
+            shop.href = item.link;
+            shop.target = "_blank";
+            shop.rel = "noopener noreferrer";
+            shop.textContent = "VIEW ITEM";
+            actions.appendChild(shop);
+        }
+
+        const purchased = document.createElement("button");
+        purchased.className = "purchased-btn";
+        purchased.textContent = item.purchased
+            ? "MARK UNPURCHASED"
+            : "MARK PURCHASED";
+
+        purchased.addEventListener("click", () => {
+            togglePurchased(item.id);
+        });
+
+        const remove = document.createElement("button");
+        remove.className = "remove-btn";
+        remove.textContent = "REMOVE";
+
+        remove.addEventListener("click", () => {
+            removeItem(item.id);
+        });
+
+        actions.append(purchased, remove);
+        info.appendChild(actions);
+
+        card.append(img, info);
+        grid.appendChild(card);
+
+    });
+
+    updateStats();
+
+}
+
+function updateStats() {
+
+    const purchased = wishlist.filter(item => item.purchased).length;
+
+    document.getElementById("totalItems").textContent =
+        wishlist.length;
+
+    document.getElementById("totalPurchased").textContent =
+        purchased;
+
+    document.getElementById("totalRemaining").textContent =
+        wishlist.length - purchased;
+
+}
+
+function togglePurchased(id) {
+
+    wishlist = wishlist.map(item => {
+
+        if (item.id === id) {
+            return {
+                ...item,
+                purchased: !item.purchased
+            };
+        }
+
+        return item;
+
+    });
+
+    saveWishlist();
+    renderWishlist();
+
+}
+
+function removeItem(id) {
+
+    if (!confirm("Remove this item from your wishlist?")) return;
+
+    wishlist = wishlist.filter(item => item.id !== id);
+
+    saveWishlist();
+    renderWishlist();
+
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        document.querySelectorAll(".filter").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        currentFilter = this.dataset.filter;
+
+        renderWishlist();
+
+    });
+
+});
+
+document.getElementById("addModal")
+.addEventListener("click", function(e) {
+
+    if (e.target === this) closeModal();
+
+});
+
+renderWishlist();
+
+</script>
+
+</body>
+</html>

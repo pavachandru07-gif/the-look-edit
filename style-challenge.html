@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Style Challenge | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #64243d;
+    --rose: #d99aaa;
+    --cream: #faf6f2;
+    --ink: #30272c;
+    --muted: #887b81;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+nav {
+    background: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    color: var(--wine);
+    letter-spacing: 2px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #51464c;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+
+nav a:hover {
+    color: var(--rose);
+}
+
+.hero {
+    min-height: 430px;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(53,20,37,.9), rgba(53,20,37,.25)),
+    url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1800')
+    center/cover;
+}
+
+.hero-content {
+    max-width: 620px;
+}
+
+.hero small {
+    letter-spacing: 4px;
+    color: #efc6d3;
+    font-size: 10px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 7vw, 78px);
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.hero p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #f0e0e6;
+    max-width: 490px;
+}
+
+.container {
+    padding: 65px 8%;
+}
+
+.heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.subheading {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 10px;
+}
+
+/* DAILY CHALLENGE */
+
+.daily {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #eadce2;
+}
+
+.daily-image {
+    min-height: 390px;
+}
+
+.daily-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.daily-content {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.daily-content small {
+    color: #9b5c75;
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+.daily-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 37px;
+    font-weight: 400;
+    margin: 18px 0;
+}
+
+.daily-content p {
+    color: #74636b;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.challenge-tag {
+    display: inline-block;
+    background: white;
+    padding: 10px 14px;
+    margin-top: 18px;
+    font-size: 10px;
+    color: var(--wine);
+    width: fit-content;
+}
+
+.complete-btn {
+    background: var(--wine);
+    color: white;
+    padding: 14px 22px;
+    border: none;
+    margin-top: 25px;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.complete-btn:hover {
+    background: #8b3c5b;
+}
+
+/* CHALLENGE GRID */
+
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.challenge-card {
+    background: white;
+    border: 1px solid #eee4e8;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px #4d263015;
+}
+
+.challenge-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.challenge-info {
+    padding: 22px;
+}
+
+.challenge-info small {
+    color: #a76c81;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.challenge-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.challenge-info p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.challenge-info button {
+    background: #f6edf0;
+    border: none;
+    padding: 11px 15px;
+    color: var(--wine);
+    cursor: pointer;
+    margin-top: 18px;
+    font-size: 10px;
+}
+
+.challenge-info button:hover {
+    background: var(--wine);
+    color: white;
+}
+
+/* PROGRESS */
+
+.progress-section {
+    background: #eee2e8;
+    padding: 45px;
+    margin-top: 65px;
+}
+
+.progress-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.progress-section p {
+    font-size: 12px;
+    color: #77666d;
+    margin: 12px 0;
+}
+
+.progress-track {
+    background: #d8c4cd;
+    height: 9px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--wine);
+    width: 0%;
+    transition: .4s;
+}
+
+.progress-count {
+    margin-top: 12px;
+    color: var(--wine);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* PERSONAL NOTES */
+
+.notes {
+    margin-top: 65px;
+}
+
+.notes textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 18px;
+    border: 1px solid #e5d6dd;
+    margin-top: 20px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+    outline: none;
+}
+
+.notes button {
+    background: var(--wine);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+#saveMessage {
+    color: #527b66;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+footer {
+    background: #321521;
+    color: #e9cbd5;
+    text-align: center;
+    padding: 32px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 800px) {
+    .challenge-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .daily {
+        grid-template-columns: 1fr;
+    }
+
+    .daily-image {
+        min-height: 270px;
+    }
+}
+
+@media(max-width: 550px) {
+    .challenge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .daily-content {
+        padding: 28px;
+    }
+
+    .progress-section {
+        padding: 25px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">THE LOOK EDIT.</div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <small>STEP OUT OF YOUR STYLE COMFORT ZONE</small>
+        <h1>The Style Challenge</h1>
+        <p>
+            Experiment with your wardrobe, try something unexpected
+            and discover new sides of your personal style.
+            A little fashion adventure starts here.
+        </p>
+    </div>
+</header>
+
+<main class="container">
+
+    <h2 class="heading">Today's Style Mission</h2>
+
+    <p class="subheading">
+        One prompt. One outfit. A chance to try something different.
+    </p>
+
+    <section class="daily">
+
+        <div class="daily-image">
+            <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1000"
+                alt="Street style inspiration"
+            >
+        </div>
+
+        <div class="daily-content">
+
+            <small>YOUR DAILY FASHION PROMPT</small>
+
+            <h2 id="dailyTitle">The Unexpected Colour</h2>
+
+            <p id="dailyDescription">
+                Build an outfit around a colour you rarely wear.
+                It could be emerald, burgundy, lavender or even orange.
+                Let that one shade lead your entire look.
+            </p>
+
+            <span class="challenge-tag" id="dailyTag">
+                COLOUR EXPERIMENT
+            </span>
+
+            <button class="complete-btn" id="dailyComplete">
+                MARK AS COMPLETED ♡
+            </button>
+
+        </div>
+
+    </section>
+
+    <section style="margin-top:70px;">
+
+        <h2 class="heading">Choose Your Challenge</h2>
+
+        <p class="subheading">
+            Pick a mission that matches your mood.
+        </p>
+
+        <div class="challenge-grid">
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" alt="Minimal outfit inspiration">
+                <div class="challenge-info">
+                    <small>01 / MINIMALISM</small>
+                    <h3>Less is More</h3>
+                    <p>Create a complete outfit using just three main clothing pieces.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800" alt="Monochrome fashion">
+                <div class="challenge-info">
+                    <small>02 / COLOUR</small>
+                    <h3>One Colour Story</h3>
+                    <p>Dress in different shades of one colour from head to toe.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800" alt="Street style outfit">
+                <div class="challenge-info">
+                    <small>03 / STREET STYLE</small>
+                    <h3>Street Style Energy</h3>
+                    <p>Mix relaxed silhouettes with one statement accessory.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=800" alt="Vintage fashion">
+                <div class="challenge-info">
+                    <small>04 / VINTAGE</small>
+                    <h3>From Another Era</h3>
+                    <p>Build a modern outfit inspired by a past fashion decade.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800" alt="Fashion accessories">
+                <div class="challenge-info">
+                    <small>05 / ACCESSORIES</small>
+                    <h3>The Finishing Touch</h3>
+                    <p>Take a simple outfit and transform it with accessories.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+            <article class="challenge-card">
+                <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800" alt="Layered fashion outfit">
+                <div class="challenge-info">
+                    <small>06 / LAYERING</small>
+                    <h3>Layer It Up</h3>
+                    <p>Experiment with layers, different fabrics and proportions.</p>
+                    <button onclick="completeChallenge(this)">ACCEPT CHALLENGE ♡</button>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="progress-section">
+
+        <h2>Your Style Journey</h2>
+
+        <p>
+            Every challenge is an opportunity to experiment.
+            Keep going and build your own styling streak.
+        </p>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="progress-count" id="progressCount">
+            0 of 7 challenges completed
+        </div>
+
+    </section>
+
+    <section class="notes">
+
+        <h2 class="heading">Your Style Journal</h2>
+
+        <p class="subheading">
+            Write down your outfit ideas, experiments and little discoveries.
+        </p>
+
+        <textarea
+            id="journal"
+            placeholder="Today I experimented with...&#10;An outfit I want to try...&#10;Something new I discovered about my style..."
+        ></textarea>
+
+        <button onclick="saveJournal()">SAVE MY NOTES</button>
+
+        <p id="saveMessage"></p>
+
+    </section>
+
+</main>
+
+<footer>
+    THE LOOK EDIT. &nbsp; | &nbsp; EXPERIMENT. EXPRESS. REPEAT.
+</footer>
+
+<script>
+
+const challenges = [
+    {
+        title: "The Unexpected Colour",
+        description: "Build an outfit around a colour you rarely wear. Let that one shade lead your entire look.",
+        tag: "COLOUR EXPERIMENT"
+    },
+    {
+        title: "The Denim Edit",
+        description: "Create an outfit with denim as the hero piece. Try a combination you have never worn before.",
+        tag: "EVERYDAY STYLE"
+    },
+    {
+        title: "A Touch of Vintage",
+        description: "Find one vintage-inspired item and style it in a completely modern way.",
+        tag: "VINTAGE INSPIRED"
+    },
+    {
+        title: "The Statement Detail",
+        description: "Keep your outfit simple and let one accessory become the centre of attention.",
+        tag: "ACCESSORY EDIT"
+    },
+    {
+        title: "Monochrome Mood",
+        description: "Choose one colour and build an outfit using different shades and textures.",
+        tag: "COLOUR STORY"
+    },
+    {
+        title: "Unexpected Layers",
+        description: "Experiment with layering different fabrics and proportions.",
+        tag: "CREATIVE STYLING"
+    },
+    {
+        title: "Your Signature Look",
+        description: "Create an outfit that represents your personality without following a trend.",
+        tag: "PERSONAL STYLE"
+    }
+];
+
+const today = new Date();
+const dateKey = today.toISOString().slice(0, 10);
+
+const dailyIndex = Math.floor(
+    new Date(today.getFullYear(), today.getMonth(), today.getDate())
+    .getTime() / 86400000
+) % challenges.length;
+
+const dailyChallenge = challenges[dailyIndex];
+
+document.getElementById("dailyTitle").textContent =
+    dailyChallenge.title;
+
+document.getElementById("dailyDescription").textContent =
+    dailyChallenge.description;
+
+document.getElementById("dailyTag").textContent =
+    dailyChallenge.tag;
+
+// Daily completion
+
+let completedDaily = JSON.parse(
+    localStorage.getItem("completedDailyChallenges")
+) || [];
+
+const dailyButton = document.getElementById("dailyComplete");
+
+function updateDailyButton() {
+    if (completedDaily.includes(dateKey)) {
+        dailyButton.textContent = "COMPLETED ✓";
+        dailyButton.disabled = true;
+        dailyButton.style.opacity = ".6";
+    }
+}
+
+dailyButton.addEventListener("click", () => {
+
+    if (!completedDaily.includes(dateKey)) {
+        completedDaily.push(dateKey);
+
+        localStorage.setItem(
+            "completedDailyChallenges",
+            JSON.stringify(completedDaily)
+        );
+
+        updateDailyButton();
+        updateProgress();
+    }
+
+});
+
+// Challenge completion
+
+let completedChallenges = JSON.parse(
+    localStorage.getItem("completedStyleChallenges")
+) || [];
+
+function completeChallenge(button) {
+
+    const card = button.closest(".challenge-card");
+    const challengeName = card.querySelector("h3").textContent;
+
+    if (completedChallenges.includes(challengeName)) {
+        return;
+    }
+
+    completedChallenges.push(challengeName);
+
+    localStorage.setItem(
+        "completedStyleChallenges",
+        JSON.stringify(completedChallenges)
+    );
+
+    button.textContent = "COMPLETED ✓";
+    button.disabled = true;
+
+    updateProgress();
+}
+
+function updateProgress() {
+
+    const total = challenges.length;
+
+    const dailyDone = completedDaily.includes(dateKey) ? 1 : 0;
+
+    const challengeDone = completedChallenges.length;
+
+    const completed = Math.min(total, challengeDone + dailyDone);
+
+    const percentage = (completed / total) * 100;
+
+    document.getElementById("progressFill").style.width =
+        percentage + "%";
+
+    document.getElementById("progressCount").textContent =
+        completed + " of " + total + " challenges completed";
+}
+
+// Restore completed buttons
+
+function restoreButtons() {
+
+    document.querySelectorAll(".challenge-card").forEach(card => {
+
+        const name = card.querySelector("h3").textContent;
+        const button = card.querySelector("button");
+
+        if (completedChallenges.includes(name)) {
+            button.textContent = "COMPLETED ✓";
+            button.disabled = true;
+        }
+
+    });
+
+}
+
+// Journal
+
+const journal = document.getElementById("journal");
+
+journal.value = localStorage.getItem("styleChallengeJournal") || "";
+
+function saveJournal() {
+
+    localStorage.setItem(
+        "styleChallengeJournal",
+        journal.value
+    );
+
+    document.getElementById("saveMessage").textContent =
+        "Your style notes have been saved ♡";
+
+}
+
+updateDailyButton();
+restoreButtons();
+updateProgress();
+
+</script>
+
+</body>
+</html>

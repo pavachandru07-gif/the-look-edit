@@ -1,0 +1,700 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Your Style | THE LOOK EDIT</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #faf6f3;
+    color: #302326;
+    font-family: 'DM Sans', sans-serif;
+}
+
+header {
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9dcd9;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    letter-spacing: 3px;
+    color: #641d32;
+}
+
+.back {
+    text-decoration: none;
+    color: #641d32;
+    font-size: 13px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 65px auto;
+    padding: 0 25px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.tag {
+    color: #a05b71;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    margin: 15px 0;
+    color: #641d32;
+}
+
+.intro p {
+    color: #89787b;
+    font-size: 14px;
+}
+
+.progress {
+    height: 5px;
+    background: #eadcdf;
+    border-radius: 10px;
+    margin-bottom: 35px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #87354f;
+    border-radius: 10px;
+    transition: .4s;
+}
+
+.question {
+    display: none;
+    animation: fade .4s ease;
+}
+
+.question.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.question h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #99888a;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.option {
+    background: white;
+    padding: 22px;
+    border: 1px solid #eadcdf;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+    text-align: left;
+    color: #48383b;
+    font-family: inherit;
+}
+
+.option:hover {
+    border-color: #87354f;
+    transform: translateY(-3px);
+}
+
+.option.selected {
+    background: #f3e3e8;
+    border: 2px solid #87354f;
+}
+
+.option span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.option strong {
+    font-size: 14px;
+}
+
+.option small {
+    display: block;
+    color: #99888a;
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-btn {
+    padding: 13px 28px;
+    background: #641d32;
+    color: white;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+.nav-btn:hover {
+    background: #87354f;
+}
+
+.nav-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+#result {
+    display: none;
+    text-align: center;
+    background: white;
+    padding: 45px 30px;
+    border-radius: 18px;
+    border: 1px solid #eadcdf;
+}
+
+#result h2 {
+    font-family: 'Playfair Display', serif;
+    color: #641d32;
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.result-label {
+    color: #a05b71;
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+#result p {
+    color: #89787b;
+    line-height: 1.8;
+    font-size: 14px;
+    margin: 15px auto;
+    max-width: 500px;
+}
+
+.restart {
+    margin-top: 20px;
+    padding: 13px 30px;
+    background: #641d32;
+    color: white;
+    border-radius: 30px;
+}
+
+@media(max-width:600px) {
+    h1 {font-size: 32px;}
+    .options {grid-template-columns: 1fr;}
+    .container {margin: 40px auto;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE LOOK EDIT.</div>
+    <a href="index.html" class="back">← Back to Home</a>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <div class="tag">Your personal style journey</div>
+        <h1>Let's Find Your Aesthetic.</h1>
+        <p>A little about you. A lot about your style. Let's begin.</p>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <form id="quizForm">
+
+    <!-- QUESTION 1 -->
+
+    <div class="question active">
+        <h2>How would you describe your style?</h2>
+        <p class="subtitle">Choose the one that feels most like you.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Old Money">
+                <span>🤍</span>
+                <strong>Quiet & Timeless</strong>
+                <small>Classic, elegant and sophisticated.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Coquette">
+                <span>🎀</span>
+                <strong>Soft & Romantic</strong>
+                <small>Feminine, delicate and dreamy.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Streetwear">
+                <span>🖤</span>
+                <strong>Bold & Edgy</strong>
+                <small>Experimental, cool and confident.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Minimalist">
+                <span>🌿</span>
+                <strong>Simple & Minimal</strong>
+                <small>Clean, effortless and understated.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Bohemian">
+                <span>🌸</span>
+                <strong>Free & Artistic</strong>
+                <small>Relaxed, expressive and creative.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Dark Feminine">
+                <span>🥀</span>
+                <strong>Mysterious & Dramatic</strong>
+                <small>Dark, glamorous and powerful.</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUESTION 2 -->
+
+    <div class="question">
+        <h2>Which colour palette speaks to you?</h2>
+        <p class="subtitle">Pick your favourite colour family.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Soft Pastels">
+                <span>🌷</span>
+                <strong>Soft Pastels</strong>
+                <small>Blush, lavender, baby blue.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Earthy Neutrals">
+                <span>🤎</span>
+                <strong>Earthy Neutrals</strong>
+                <small>Beige, cream, caramel, brown.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Rich Jewel Tones">
+                <span>💎</span>
+                <strong>Rich Jewel Tones</strong>
+                <small>Burgundy, emerald, navy, plum.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Monochrome">
+                <span>🖤</span>
+                <strong>Monochrome</strong>
+                <small>Black, white and grey.</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUESTION 3 -->
+
+    <div class="question">
+        <h2>What's your ideal outfit?</h2>
+        <p class="subtitle">Imagine getting dressed for a perfect day.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Tailored Elegance">
+                <span>👗</span>
+                <strong>Tailored Elegance</strong>
+                <small>Blazers, trousers and structured dresses.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Soft Feminine">
+                <span>🎀</span>
+                <strong>Soft Feminine</strong>
+                <small>Flowy skirts, delicate tops and dresses.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Casual Chic">
+                <span>👖</span>
+                <strong>Casual Chic</strong>
+                <small>Denim, oversized shirts and sneakers.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Glamorous">
+                <span>✨</span>
+                <strong>Glamorous</strong>
+                <small>Statement outfits, heels and accessories.</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUESTION 4 -->
+
+    <div class="question">
+        <h2>What's your everyday vibe?</h2>
+        <p class="subtitle">Your style should fit your lifestyle.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Elegant">
+                <span>☕</span>
+                <strong>Elegant & Polished</strong>
+                <small>Always put together.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Relaxed">
+                <span>🌿</span>
+                <strong>Relaxed & Comfortable</strong>
+                <small>Comfort comes first.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Trendy">
+                <span>📸</span>
+                <strong>Trendy & Experimental</strong>
+                <small>Always trying something new.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Creative">
+                <span>🎨</span>
+                <strong>Creative & Individual</strong>
+                <small>My style has no rules.</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUESTION 5 -->
+
+    <div class="question">
+        <h2>What inspires your fashion choices?</h2>
+        <p class="subtitle">Pick your biggest source of inspiration.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Runway">
+                <span>💃</span>
+                <strong>Fashion Runways</strong>
+                <small>Haute couture and designer collections.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Pinterest">
+                <span>📌</span>
+                <strong>Pinterest Aesthetics</strong>
+                <small>Moodboards and curated outfits.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Celebrities">
+                <span>⭐</span>
+                <strong>Celebrity Fashion</strong>
+                <small>Red carpets and street style.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Vintage">
+                <span>🕰️</span>
+                <strong>Vintage Fashion</strong>
+                <small>Classic pieces and timeless inspiration.</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUESTION 6 -->
+
+    <div class="question">
+        <h2>How would you describe your beauty aesthetic?</h2>
+        <p class="subtitle">Let's discover your beauty personality too.</p>
+
+        <div class="options">
+            <button type="button" class="option" data-value="Clean Beauty">
+                <span>🫧</span>
+                <strong>Clean Girl</strong>
+                <small>Fresh skin and minimal makeup.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Soft Glam">
+                <span>🌸</span>
+                <strong>Soft Glam</strong>
+                <small>Glowy skin and rosy tones.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Bold Glam">
+                <span>💄</span>
+                <strong>Bold Glam</strong>
+                <small>Statement lips and dramatic eyes.</small>
+            </button>
+
+            <button type="button" class="option" data-value="Natural Beauty">
+                <span>🌿</span>
+                <strong>Natural Beauty</strong>
+                <small>Effortless and understated.</small>
+            </button>
+        </div>
+    </div>
+
+    </form>
+
+    <div class="buttons" id="navigation">
+        <button class="nav-btn" id="prev" onclick="changeQuestion(-1)" disabled>
+            ← Previous
+        </button>
+
+        <button class="nav-btn" id="next" onclick="changeQuestion(1)" disabled>
+            Next →
+        </button>
+    </div>
+
+    <!-- RESULT -->
+
+    <div id="result">
+        <div class="result-label">YOUR PERSONAL STYLE PROFILE</div>
+
+        <h2 id="styleName"></h2>
+
+        <p id="styleDescription"></p>
+
+        <p id="styleDetails"></p>
+
+        <button class="restart" onclick="restartQuiz()">
+            Retake Quiz ↻
+        </button>
+
+        <br><br>
+
+        <a href="index.html" style="color:#87354f;font-size:13px;">
+            Return to THE LOOK EDIT →
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+let currentQuestion = 0;
+
+const questions = document.querySelectorAll('.question');
+const answers = [];
+
+const total = questions.length;
+
+function updateProgress() {
+    document.getElementById('progress').style.width =
+        ((currentQuestion + 1) / total * 100) + '%';
+
+    document.getElementById('prev').disabled =
+        currentQuestion === 0;
+
+    document.getElementById('next').textContent =
+        currentQuestion === total - 1 ? 'Discover My Style →' : 'Next →';
+}
+
+questions.forEach((question, index) => {
+
+    question.querySelectorAll('.option').forEach(option => {
+
+        option.addEventListener('click', () => {
+
+            question.querySelectorAll('.option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            option.classList.add('selected');
+
+            answers[index] = option.dataset.value;
+
+            document.getElementById('next').disabled = false;
+
+        });
+
+    });
+
+});
+
+function changeQuestion(direction) {
+
+    if (direction === 1 && !answers[currentQuestion]) return;
+
+    questions[currentQuestion].classList.remove('active');
+
+    currentQuestion += direction;
+
+    if (currentQuestion >= total) {
+        showResult();
+        return;
+    }
+
+    questions[currentQuestion].classList.add('active');
+
+    document.getElementById('next').disabled =
+        !answers[currentQuestion];
+
+    updateProgress();
+}
+
+function showResult() {
+
+    document.getElementById('quizForm').style.display = 'none';
+    document.getElementById('navigation').style.display = 'none';
+    document.querySelector('.progress').style.display = 'none';
+
+    const styles = {
+        "Old Money": {
+            description: "Your style is timeless, refined and effortlessly elegant. You believe that true luxury never needs to shout.",
+            details: "Your wardrobe: tailored blazers, neutral knits, structured handbags, classic trousers and delicate jewellery."
+        },
+
+        "Coquette": {
+            description: "You love romantic details, feminine silhouettes and dreamy aesthetics. Your style feels delicate and expressive.",
+            details: "Your wardrobe: satin ribbons, lace details, soft dresses, ballet flats and pearl accessories."
+        },
+
+        "Streetwear": {
+            description: "You are bold, expressive and never afraid to experiment. Your style is a reflection of your individuality.",
+            details: "Your wardrobe: oversized jackets, statement sneakers, relaxed denim and graphic pieces."
+        },
+
+        "Minimalist": {
+            description: "You believe less is more. Your style is effortless, clean and beautifully understated.",
+            details: "Your wardrobe: clean silhouettes, quality basics, monochrome outfits and versatile essentials."
+        },
+
+        "Bohemian": {
+            description: "You have an artistic spirit and love freedom in fashion. You prefer outfits that feel personal and expressive.",
+            details: "Your wardrobe: flowing silhouettes, textured fabrics, layered jewellery and earthy colours."
+        },
+
+        "Dark Feminine": {
+            description: "You embrace mystery, confidence and sophisticated drama. Your style makes a statement without saying a word.",
+            details: "Your wardrobe: black dresses, burgundy accents, sleek silhouettes, dramatic accessories and pointed heels."
+        }
+    };
+
+    const counts = {};
+
+    answers.forEach(answer => {
+        counts[answer] = (counts[answer] || 0) + 1;
+    });
+
+    const styleScores = {
+        "Old Money": 0,
+        "Coquette": 0,
+        "Streetwear": 0,
+        "Minimalist": 0,
+        "Bohemian": 0,
+        "Dark Feminine": 0
+    };
+
+    // Main style preference
+    styleScores[answers[0]] += 4;
+
+    // Colour preference
+    if (answers[1] === "Earthy Neutrals") styleScores["Old Money"] += 2;
+    if (answers[1] === "Soft Pastels") styleScores["Coquette"] += 2;
+    if (answers[1] === "Monochrome") styleScores["Minimalist"] += 2;
+    if (answers[1] === "Rich Jewel Tones") styleScores["Dark Feminine"] += 2;
+
+    // Outfit preference
+    if (answers[2] === "Tailored Elegance") styleScores["Old Money"] += 2;
+    if (answers[2] === "Soft Feminine") styleScores["Coquette"] += 2;
+    if (answers[2] === "Casual Chic") styleScores["Minimalist"] += 2;
+    if (answers[2] === "Glamorous") styleScores["Dark Feminine"] += 2;
+
+    // Lifestyle
+    if (answers[3] === "Elegant") styleScores["Old Money"] += 2;
+    if (answers[3] === "Relaxed") styleScores["Minimalist"] += 2;
+    if (answers[3] === "Trendy") styleScores["Streetwear"] += 2;
+    if (answers[3] === "Creative") styleScores["Bohemian"] += 2;
+
+    // Inspiration
+    if (answers[4] === "Runway") styleScores["Dark Feminine"] += 2;
+    if (answers[4] === "Pinterest") styleScores["Coquette"] += 2;
+    if (answers[4] === "Celebrities") styleScores["Streetwear"] += 2;
+    if (answers[4] === "Vintage") styleScores["Bohemian"] += 2;
+
+    // Beauty
+    if (answers[5] === "Clean Beauty") styleScores["Minimalist"] += 2;
+    if (answers[5] === "Soft Glam") styleScores["Coquette"] += 2;
+    if (answers[5] === "Bold Glam") styleScores["Dark Feminine"] += 2;
+    if (answers[5] === "Natural Beauty") styleScores["Bohemian"] += 2;
+
+    const winner = Object.keys(styleScores).reduce((a, b) =>
+        styleScores[a] >= styleScores[b] ? a : b
+    );
+
+    document.getElementById('styleName').textContent =
+        winner + " Aesthetic";
+        localStorage.setItem("selectedStyle", winner);
+
+    document.getElementById('styleDescription').textContent =
+        styles[winner].description;
+
+    document.getElementById('styleDetails').textContent =
+        styles[winner].details;
+
+    window.location.href = "profile.html";
+
+}
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    answers.length = 0;
+
+    questions.forEach(question => {
+        question.classList.remove('active');
+        question.querySelectorAll('.option').forEach(option => {
+            option.classList.remove('selected');
+        });
+    });
+
+    questions[0].classList.add('active');
+
+    document.getElementById('quizForm').style.display = 'block';
+    document.getElementById('navigation').style.display = 'flex';
+    document.querySelector('.progress').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
+
+    document.getElementById('next').disabled = true;
+
+    updateProgress();
+}
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
+```

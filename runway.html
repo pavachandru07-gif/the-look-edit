@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>The Runway Journal | THE LOOK EDIT</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+    .journal-hero {
+        background: #381d2d;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+    }
+
+    .journal-hero .eyebrow {
+        color: #e5b4c6;
+    }
+
+    .journal-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(42px, 7vw, 76px);
+        font-weight: 400;
+    }
+
+    .journal-hero h1 em {
+        color: #e5b4c6;
+    }
+
+    .journal-hero p {
+        max-width: 600px;
+        margin: 25px auto 0;
+        color: #e5d6dd;
+        line-height: 2;
+        font-size: 13px;
+    }
+
+    .journal-container {
+        padding: 80px 7%;
+    }
+
+    .journal-heading {
+        margin-bottom: 35px;
+    }
+
+    .journal-heading h2 {
+        font-family: 'Playfair Display', serif;
+        color: #50172e;
+        font-weight: 400;
+        font-size: 40px;
+    }
+
+    .journal-heading p {
+        color: #8b747e;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .journal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .journal-card {
+        background: #f3eae8;
+        overflow: hidden;
+    }
+
+    .journal-card img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        transition: transform .6s;
+    }
+
+    .journal-card:hover img {
+        transform: scale(1.04);
+    }
+
+    .journal-card-content {
+        padding: 25px;
+    }
+
+    .journal-card-content span {
+        color: #a45a75;
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .journal-card-content h3 {
+        font-family: 'Playfair Display', serif;
+        color: #50172e;
+        font-size: 25px;
+        font-weight: 400;
+        margin: 12px 0;
+    }
+
+    .journal-card-content p {
+        font-size: 12px;
+        color: #776970;
+        line-height: 1.9;
+    }
+
+    .couture-banner {
+        background: #e9dce3;
+        padding: 85px 20px;
+        text-align: center;
+    }
+
+    .couture-banner h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 45px;
+        font-weight: 400;
+        color: #50172e;
+    }
+
+    .couture-banner p {
+        color: #776970;
+        font-size: 13px;
+        line-height: 2;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+    .back-home {
+        display: inline-block;
+        margin-top: 35px;
+        color: #50172e;
+        font-size: 10px;
+        letter-spacing: 2px;
+        border-bottom: 1px solid #50172e;
+        padding-bottom: 7px;
+    }
+
+    @media(max-width: 800px) {
+        .journal-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media(max-width: 550px) {
+        .journal-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .journal-card img {
+            height: 380px;
+        }
+
+        .journal-container {
+            padding: 60px 6%;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="announcement">
+    THE WORLD OF FASHION · THROUGH OUR LENS
+</div>
+
+<header>
+
+    <a href="index.html" class="logo">
+        THE LOOK <span>EDIT.</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#fashionweeks">Fashion Weeks</a>
+        <a href="#designers">Designers</a>
+        <a href="#couture">Couture</a>
+    </nav>
+
+    <a href="index.html#discover" class="discover-link">
+        DISCOVER YOUR STYLE ↗
+    </a>
+
+</header>
+
+
+<section class="journal-hero">
+
+    <p class="eyebrow">THE LOOK EDIT PRESENTS</p>
+
+    <h1>
+        The Runway
+        <br>
+        <em>Journal.</em>
+    </h1>
+
+    <p>
+        From the energy of fashion week to the artistry
+        of haute couture, explore the collections,
+        creative visions and designers shaping fashion.
+    </p>
+
+</section>
+
+
+<main>
+
+    <section class="journal-container" id="fashionweeks">
+
+        <div class="journal-heading">
+
+            <p class="eyebrow">THE GLOBAL FASHION CALENDAR</p>
+
+            <h2>Fashion Week Dispatches</h2>
+
+            <p>A look into the four major fashion capitals.</p>
+
+        </div>
+
+
+        <div class="journal-grid">
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85"
+                     alt="Paris fashion inspiration">
+
+                <div class="journal-card-content">
+
+                    <span>FRANCE · FASHION CAPITAL</span>
+
+                    <h3>Paris Fashion Week</h3>
+
+                    <p>
+                        Discover the elegance, craftsmanship
+                        and creative expression associated
+                        with the Paris fashion scene.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+                     alt="Milan fashion inspiration">
+
+                <div class="journal-card-content">
+
+                    <span>ITALY · DESIGN & CRAFT</span>
+
+                    <h3>Milan Fashion Week</h3>
+
+                    <p>
+                        Explore refined tailoring,
+                        expressive silhouettes and
+                        Italian fashion craftsmanship.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"
+                     alt="New York fashion inspiration">
+
+                <div class="journal-card-content">
+
+                    <span>USA · MODERN EXPRESSION</span>
+
+                    <h3>New York Fashion Week</h3>
+
+                    <p>
+                        Discover contemporary dressing,
+                        creative experimentation and
+                        the energy of the New York runway.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+                     alt="London fashion inspiration">
+
+                <div class="journal-card-content">
+
+                    <span>UNITED KINGDOM · CREATIVE CULTURE</span>
+
+                    <h3>London Fashion Week</h3>
+
+                    <p>
+                        Explore experimental fashion,
+                        emerging talent and unconventional
+                        creative ideas.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=900&q=85"
+                     alt="Haute couture fashion">
+
+                <div class="journal-card-content">
+
+                    <span>THE ART OF DESIGN</span>
+
+                    <h3>Couture Highlights</h3>
+
+                    <p>
+                        Discover extraordinary construction,
+                        detailed embellishments and
+                        exceptional craftsmanship.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85"
+                     alt="Designer fashion details">
+
+                <div class="journal-card-content">
+
+                    <span>THE CREATIVE PROCESS</span>
+
+                    <h3>Inside the Collections</h3>
+
+                    <p>
+                        Explore the inspiration, colours,
+                        fabrics and creative direction
+                        behind fashion collections.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="journal-container" id="designers">
+
+        <div class="journal-heading">
+
+            <p class="eyebrow">THE CREATIVE MINDS</p>
+
+            <h2>Designer Perspectives</h2>
+
+            <p>
+                An introduction to the creative vision
+                behind influential fashion houses.
+            </p>
+
+        </div>
+
+        <div class="journal-grid">
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85"
+                     alt="Luxury designer fashion">
+
+                <div class="journal-card-content">
+
+                    <span>FASHION HOUSE SPOTLIGHT</span>
+
+                    <h3>Creative Vision</h3>
+
+                    <p>
+                        Explore how designers translate
+                        imagination into clothing,
+                        silhouettes and visual identity.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85"
+                     alt="Runway collection">
+
+                <div class="journal-card-content">
+
+                    <span>COLLECTION STUDY</span>
+
+                    <h3>The Art of a Collection</h3>
+
+                    <p>
+                        Look beyond individual outfits
+                        and discover the story connecting
+                        an entire collection.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="journal-card">
+
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=900&q=85"
+                     alt="Fashion craftsmanship">
+
+                <div class="journal-card-content">
+
+                    <span>CRAFT & DETAIL</span>
+
+                    <h3>Behind the Seams</h3>
+
+                    <p>
+                        Appreciate the techniques,
+                        construction and attention
+                        that make fashion exceptional.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="couture-banner" id="couture">
+
+        <p class="eyebrow">A WORLD BEYOND READY-TO-WEAR</p>
+
+        <h2>The Art of Haute Couture</h2>
+
+        <p>
+            Where imagination meets exceptional craftsmanship.
+            Discover the details, techniques and artistic
+            expression that make couture extraordinary.
+        </p>
+
+        <a href="index.html#couture" class="back-home">
+            EXPLORE THE COUTURE EDIT ↗
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        THE LOOK <span>EDIT.</span>
+    </div>
+
+    <p>Fashion is personal. Make it yours.</p>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#runway">Runway</a>
+        <a href="index.html#trends">Trends</a>
+        <a href="index.html#beauty">Beauty</a>
+    </div>
+
+    <div class="copyright">
+        © 2026 THE LOOK EDIT · ALL RIGHTS RESERVED.
+    </div>
+
+</footer>
+```
+
+</body>
+</html>

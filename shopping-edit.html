@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shopping Edit | The Look Edit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #681d36;
+    --pink: #ead0d5;
+    --cream: #faf6f1;
+    --ink: #211b1d;
+    --muted: #81777a;
+    --line: #e8dedb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    min-height: 76px;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: #fffdfa;
+    border-bottom: 1px solid var(--line);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: var(--wine);
+}
+
+.navlinks {
+    display: flex;
+    gap: 21px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.navlinks a:hover {
+    color: var(--wine);
+}
+
+.hero {
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #ead8d7;
+}
+
+.hero-text {
+    padding: 90px 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--wine);
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.05;
+    font-weight: 500;
+}
+
+.hero h1 em {
+    color: var(--wine);
+}
+
+.hero p {
+    color: #68595c;
+    line-height: 1.9;
+    margin: 23px 0;
+    max-width: 420px;
+    font-size: 13px;
+}
+
+.button {
+    display: inline-block;
+    width: fit-content;
+    padding: 15px 25px;
+    background: var(--wine);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-image {
+    min-height: 520px;
+    background:
+    linear-gradient(#00000008,#00000008),
+    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85')
+    center/cover;
+}
+
+.section {
+    padding: 85px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-heading span {
+    color: var(--wine);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 500;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 13px;
+}
+
+.category {
+    height: 190px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #ddd;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.category:hover img {
+    transform: scale(1.08);
+}
+
+.category::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, #170e10a8);
+}
+
+.category h3 {
+    position: absolute;
+    z-index: 1;
+    bottom: 18px;
+    left: 12px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.search-area {
+    max-width: 750px;
+    margin: 0 auto 30px;
+}
+
+.search-area input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    background: white;
+    outline: none;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin: 25px 0 35px;
+}
+
+.filter {
+    border: 1px solid #d9c9c9;
+    background: transparent;
+    padding: 10px 17px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--wine);
+    border-color: var(--wine);
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px 22px;
+}
+
+.product-card {
+    background: white;
+    padding-bottom: 20px;
+    transition: transform .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 330px;
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+
+.product-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.04);
+}
+
+.tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #fffaf3;
+    color: var(--wine);
+    padding: 7px 11px;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.product-info {
+    padding: 18px 17px 0;
+}
+
+.product-category {
+    font-size: 9px;
+    color: var(--wine);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.product-info p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    min-height: 38px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+    gap: 10px;
+}
+
+.save-btn,
+.explore-btn {
+    padding: 10px 13px;
+    font-family: inherit;
+    font-size: 9px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.save-btn {
+    border: 1px solid var(--wine);
+    background: white;
+    color: var(--wine);
+}
+
+.save-btn.saved {
+    background: var(--wine);
+    color: white;
+}
+
+.explore-btn {
+    background: var(--wine);
+    color: white;
+    border: 1px solid var(--wine);
+}
+
+.empty {
+    grid-column: 1/-1;
+    text-align: center;
+    color: var(--muted);
+    padding: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #252d37;
+    color: white;
+    min-height: 390px;
+}
+
+.feature-image {
+    background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=85') center/cover;
+}
+
+.feature-text {
+    padding: 65px 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-text span {
+    color: #e6b7c5;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.feature-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    font-weight: 500;
+    margin: 17px 0;
+}
+
+.feature-text p {
+    color: #d3d2d3;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.pinterest {
+    display: inline-block;
+    color: var(--wine);
+    border-bottom: 1px solid var(--wine);
+    padding-bottom: 4px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: fit-content;
+    margin-top: 18px;
+}
+
+.inspiration-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.inspiration-grid a {
+    height: 270px;
+    overflow: hidden;
+    position: relative;
+}
+
+.inspiration-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.inspiration-grid a:hover img {
+    transform: scale(1.07);
+}
+
+.inspiration-grid span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 12px 13px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    background: linear-gradient(transparent, #0009);
+}
+
+.saved-section {
+    background: #f0e4e2;
+}
+
+.saved-count {
+    color: var(--wine);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+footer {
+    background: #24191d;
+    color: white;
+    padding: 45px 7%;
+    text-align: center;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+footer p {
+    font-size: 10px;
+    color: #c7b8bc;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+@media(max-width: 900px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navlinks {
+        gap: 12px;
+    }
+}
+
+@media(max-width: 600px) {
+    nav {
+        justify-content: center;
+    }
+
+    .hero,
+    .feature {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        padding: 65px 8%;
+    }
+
+    .hero-image {
+        min-height: 350px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 390px;
+    }
+
+    .inspiration-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section {
+        padding: 60px 6%;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="logo">THE LOOK EDIT</a>
+
+    <div class="navlinks">
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+        <a href="shopping-edit.html">SHOPPING EDIT</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-text">
+        <span class="eyebrow">THE LOOK EDIT PRESENTS · 2026</span>
+        <h1>The Art of<br><em>Finding</em> Your Style.</h1>
+        <p>
+            A curated corner for beautiful things. Discover pieces,
+            explore new labels and collect inspiration for your
+            next favourite look.
+        </p>
+        <a href="#discover" class="button">EXPLORE THE EDIT</a>
+    </div>
+
+    <div class="hero-image"></div>
+</header>
+
+<section class="section">
+    <div class="section-heading">
+        <span>EXPLORE BY CATEGORY</span>
+        <h2>What are we looking for?</h2>
+        <p>Every little detail makes the look.</p>
+    </div>
+
+    <div class="category-grid">
+        <div class="category" onclick="selectCategory('clothing')">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80">
+            <h3>Clothing</h3>
+        </div>
+
+        <div class="category" onclick="selectCategory('bags')">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80">
+            <h3>Bags</h3>
+        </div>
+
+        <div class="category" onclick="selectCategory('shoes')">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80">
+            <h3>Shoes</h3>
+        </div>
+
+        <div class="category" onclick="selectCategory('jewellery')">
+            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80">
+            <h3>Jewellery</h3>
+        </div>
+
+        <div class="category" onclick="selectCategory('beauty')">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80">
+            <h3>Beauty</h3>
+        </div>
+
+        <div class="category" onclick="selectCategory('lifestyle')">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80">
+            <h3>Lifestyle</h3>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="discover">
+    <div class="section-heading">
+        <span>THE CURATED COLLECTION</span>
+        <h2>Pieces Worth Discovering.</h2>
+        <p>Shopping inspiration for the wardrobe and life you want to create.</p>
+    </div>
+
+    <div class="search-area">
+        <input type="text" id="searchInput" placeholder="Search clothing, bags, jewellery, aesthetics..." oninput="renderProducts()">
+    </div>
+
+    <div class="filters">
+        <button class="filter active" onclick="setFilter('all',this)">ALL FINDS</button>
+        <button class="filter" onclick="setFilter('clothing',this)">CLOTHING</button>
+        <button class="filter" onclick="setFilter('bags',this)">BAGS</button>
+        <button class="filter" onclick="setFilter('shoes',this)">SHOES</button>
+        <button class="filter" onclick="setFilter('jewellery',this)">JEWELLERY</button>
+        <button class="filter" onclick="setFilter('beauty',this)">BEAUTY</button>
+        <button class="filter" onclick="setFilter('lifestyle',this)">LIFESTYLE</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="feature">
+    <div class="feature-image"></div>
+
+    <div class="feature-text">
+        <span>THIS MONTH'S STYLE STORY</span>
+        <h2>The Modern<br>Romantic.</h2>
+        <p>
+            Soft textures, delicate details, structured silhouettes
+            and a little drama. Explore a wardrobe that feels
+            feminine without trying too hard.
+        </p>
+        <a class="button" href="https://www.pinterest.com/search/pins/?q=modern%20romantic%20fashion%20aesthetic" target="_blank">
+            EXPLORE THE AESTHETIC
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span>VISUAL SHOPPING NOTES</span>
+        <h2>Save the Feeling.</h2>
+        <p>Little visual worlds to inspire your next purchase.</p>
+    </div>
+
+    <div class="inspiration-grid">
+        <a href="https://www.pinterest.com/search/pins/?q=quiet%20luxury%20wardrobe" target="_blank">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80">
+            <span>Quiet Luxury</span>
+        </a>
+
+        <a href="https://www.pinterest.com/search/pins/?q=burgundy%20fashion%20aesthetic" target="_blank">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80">
+            <span>Burgundy Mood</span>
+        </a>
+
+        <a href="https://www.pinterest.com/search/pins/?q=everyday%20designer%20bags" target="_blank">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80">
+            <span>Bag Obsession</span>
+        </a>
+
+        <a href="https://www.pinterest.com/search/pins/?q=gold%20jewellery%20minimalist" target="_blank">
+            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80">
+            <span>Golden Details</span>
+        </a>
+    </div>
+</section>
+
+<section class="section saved-section">
+    <div class="section-heading">
+        <span>YOUR PERSONAL COLLECTION</span>
+        <h2>Your Saved Finds.</h2>
+        <p>Keep all your favourite discoveries in one place.</p>
+        <div class="saved-count" id="savedCount">0 saved pieces</div>
+    </div>
+
+    <div class="product-grid" id="savedGrid"></div>
+</section>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>DISCOVER · COLLECT · EXPRESS YOURSELF</p>
+    <p>YOUR STYLE, YOUR STORY.</p>
+</footer>
+
+<script>
+const products = [
+    {
+        id: 1,
+        name: "The Effortless Blazer",
+        category: "clothing",
+        tag: "WARDROBE CLASSIC",
+        description: "A tailored silhouette that makes even the simplest outfit feel intentional.",
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.cos.com/"
+    },
+    {
+        id: 2,
+        name: "The Everyday Tote",
+        category: "bags",
+        tag: "EVERYDAY EDIT",
+        description: "A roomy, versatile bag for days when you need everything with you.",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.zara.com/"
+    },
+    {
+        id: 3,
+        name: "The Statement Heel",
+        category: "shoes",
+        tag: "GO-OUT PIECE",
+        description: "An elegant finishing touch for evening looks and special occasions.",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.mango.com/"
+    },
+    {
+        id: 4,
+        name: "Golden Hour Jewellery",
+        category: "jewellery",
+        tag: "LITTLE DETAILS",
+        description: "Delicate golden accents that work beautifully layered or worn alone.",
+        image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.pandora.net/"
+    },
+    {
+        id: 5,
+        name: "The Beauty Ritual",
+        category: "beauty",
+        tag: "BEAUTY SHELF",
+        description: "A little inspiration for creating a thoughtful everyday beauty ritual.",
+        image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.sephora.com/"
+    },
+    {
+        id: 6,
+        name: "The Soft Knit",
+        category: "clothing",
+        tag: "TEXTURE STORY",
+        description: "Soft layers and relaxed shapes for a polished, comfortable wardrobe.",
+        image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=80",
+        link: "https://www2.hm.com/"
+    },
+    {
+        id: 7,
+        name: "The Minimal Shoulder Bag",
+        category: "bags",
+        tag: "MINIMAL MOOD",
+        description: "A clean shape that complements both relaxed and dressed-up outfits.",
+        image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.charleskeith.com/"
+    },
+    {
+        id: 8,
+        name: "The Classic Sneaker",
+        category: "shoes",
+        tag: "OFF-DUTY STYLE",
+        description: "A timeless everyday silhouette for effortless casual styling.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.nike.com/"
+    },
+    {
+        id: 9,
+        name: "Pearl Details",
+        category: "jewellery",
+        tag: "ROMANTIC TOUCH",
+        description: "A softer, classic detail for a look that never feels overdone.",
+        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.swarovski.com/"
+    },
+    {
+        id: 10,
+        name: "The Fragrance Mood",
+        category: "beauty",
+        tag: "SENSORY EDIT",
+        description: "Explore the world of scent and find a fragrance mood that feels like you.",
+        image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.sephora.com/"
+    },
+    {
+        id: 11,
+        name: "The Little Home Edit",
+        category: "lifestyle",
+        tag: "LIVING WELL",
+        description: "Thoughtful objects and quiet details for a beautiful everyday space.",
+        image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.ikea.com/"
+    },
+    {
+        id: 12,
+        name: "The Weekend Dress",
+        category: "clothing",
+        tag: "WEEKEND MOOD",
+        description: "An easy outfit inspiration for brunches, holidays and slow afternoons.",
+        image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=80",
+        link: "https://www.mango.com/"
+    }
+];
+
+let currentFilter = "all";
+let savedItems = JSON.parse(localStorage.getItem("shoppingEditSaved")) || [];
+
+function renderProducts() {
+    const grid = document.getElementById("productGrid");
+    const search = document.getElementById("searchInput").value.toLowerCase();
+
+    const filtered = products.filter(item => {
+        const matchesCategory =
+            currentFilter === "all" || item.category === currentFilter;
+
+        const matchesSearch =
+            item.name.toLowerCase().includes(search) ||
+            item.category.toLowerCase().includes(search) ||
+            item.description.toLowerCase().includes(search) ||
+            item.tag.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    grid.innerHTML = "";
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty">No finds here yet. Try another search.</div>';
+        return;
+    }
+
+    filtered.forEach(item => {
+        const isSaved = savedItems.includes(item.id);
+
+        grid.innerHTML += `
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                    <span class="tag">${item.tag}</span>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">${item.category}</span>
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+
+                    <div class="card-actions">
+                        <button class="save-btn ${isSaved ? 'saved' : ''}"
+                            onclick="toggleSave(${item.id})">
+                            ${isSaved ? '♥ SAVED' : '♡ SAVE FIND'}
+                        </button>
+
+                        <a class="explore-btn"
+                            href="${item.link}" target="_blank" rel="noopener">
+                            EXPLORE BRAND ↗
+                        </a>
+                    </div>
+
+                    <a class="pinterest"
+                       href="https://www.pinterest.com/search/pins/?q=${encodeURIComponent(item.name + ' fashion aesthetic')}"
+                       target="_blank" rel="noopener">
+                       VIEW PINTEREST INSPIRATION ↗
+                    </a>
+                </div>
+            </article>
+        `;
+    });
+}
+
+function setFilter(category, button) {
+    currentFilter = category;
+
+    document.querySelectorAll(".filter").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    renderProducts();
+}
+
+function selectCategory(category) {
+    currentFilter = category;
+
+    document.querySelectorAll(".filter").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.textContent.trim().toLowerCase() === category ||
+            (category === "all" && btn.textContent.trim() === "ALL FINDS")
+        );
+    });
+
+    document.getElementById("discover").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    renderProducts();
+}
+
+function toggleSave(id) {
+    if (savedItems.includes(id)) {
+        savedItems = savedItems.filter(item => item !== id);
+    } else {
+        savedItems.push(id);
+    }
+
+    localStorage.setItem("shoppingEditSaved", JSON.stringify(savedItems));
+
+    renderProducts();
+    renderSaved();
+}
+
+function renderSaved() {
+    const grid = document.getElementById("savedGrid");
+    const count = document.getElementById("savedCount");
+
+    const savedProducts = products.filter(item => savedItems.includes(item.id));
+
+    count.textContent = `${savedProducts.length} saved ${savedProducts.length === 1 ? "piece" : "pieces"}`;
+
+    grid.innerHTML = "";
+
+    if (savedProducts.length === 0) {
+        grid.innerHTML = '<div class="empty">Your collection is waiting for its first find. ♡</div>';
+        return;
+    }
+
+    savedProducts.forEach(item => {
+        grid.innerHTML += `
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">${item.category}</span>
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+
+                    <div class="card-actions">
+                        <button class="save-btn saved"
+                            onclick="toggleSave(${item.id})">
+                            ♥ REMOVE
+                        </button>
+
+                        <a class="explore-btn"
+                            href="${item.link}" target="_blank" rel="noopener">
+                            EXPLORE ↗
+                        </a>
+                    </div>
+                </div>
+            </article>
+        `;
+    });
+}
+
+renderProducts();
+renderSaved();
+</script>
+
+</body>
+</html>

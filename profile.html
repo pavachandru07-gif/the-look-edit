@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Style Profile | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    background:#faf6f3;
+    color:#38272d;
+    font-family:'DM Sans',sans-serif;
+}
+
+header {
+    padding:25px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #eadcdf;
+}
+
+.logo {
+    font-family:'Playfair Display',serif;
+    font-size:26px;
+    letter-spacing:3px;
+    color:#641d32;
+}
+
+header a {
+    color:#641d32;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.hero {
+    text-align:center;
+    padding:85px 20px 55px;
+}
+
+.label {
+    color:#a05b71;
+    letter-spacing:4px;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+h1 {
+    font-family:'Playfair Display',serif;
+    font-size:55px;
+    color:#641d32;
+    margin:20px 0;
+}
+
+.hero p {
+    color:#8d797e;
+    font-size:14px;
+}
+
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:20px 25px 80px;
+}
+
+.section-title {
+    font-family:'Playfair Display',serif;
+    font-size:31px;
+    color:#641d32;
+    margin-bottom:25px;
+}
+
+.profile-card {
+    background:#f0e2e5;
+    padding:45px;
+    border-radius:18px;
+    margin-bottom:65px;
+    text-align:center;
+}
+
+.profile-card h2 {
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    color:#641d32;
+    margin:15px;
+}
+
+.profile-card p {
+    color:#765c65;
+    line-height:1.8;
+    max-width:650px;
+    margin:auto;
+    font-size:14px;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:65px;
+}
+
+.card {
+    background:white;
+    padding:27px;
+    border-radius:15px;
+    border:1px solid #eadcdf;
+}
+
+.card .icon {
+    font-size:29px;
+    margin-bottom:15px;
+}
+
+.card h3 {
+    font-family:'Playfair Display',serif;
+    font-size:21px;
+    color:#641d32;
+    margin-bottom:12px;
+}
+
+.card p {
+    font-size:13px;
+    line-height:1.8;
+    color:#89777c;
+}
+
+.palette {
+    display:flex;
+    gap:15px;
+    margin-bottom:65px;
+    flex-wrap:wrap;
+}
+
+.swatch {
+    flex:1;
+    min-width:100px;
+    height:125px;
+    border-radius:12px;
+    display:flex;
+    align-items:end;
+    justify-content:center;
+    padding:12px;
+    color:white;
+    font-size:12px;
+}
+
+.outfit {
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    border:1px solid #eadcdf;
+}
+
+.outfit img {
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.outfit div {
+    padding:20px;
+}
+
+.outfit h3 {
+    font-family:'Playfair Display',serif;
+    color:#641d32;
+    margin-bottom:10px;
+}
+
+.outfit p {
+    font-size:12px;
+    color:#89777c;
+    line-height:1.7;
+}
+
+footer {
+    background:#641d32;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+footer h2 {
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    margin-bottom:12px;
+}
+
+footer p {
+    font-size:12px;
+    color:#e5cbd3;
+}
+
+@media(max-width:700px) {
+    .grid {
+        grid-template-columns:1fr;
+    }
+
+    h1 {
+        font-size:38px;
+    }
+
+    .profile-card h2 {
+        font-size:30px;
+    }
+
+    .profile-card {
+        padding:30px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE LOOK EDIT.</div>
+    <a href="index.html">← Home</a>
+</header>
+
+<section class="hero">
+    <div class="label">Your fashion identity</div>
+    <h1>Your Style. Your Story.</h1>
+    <p>A curated world of fashion, beauty and everything that makes you YOU.</p>
+</section>
+
+<main class="container">
+
+    <section class="profile-card">
+
+        <div class="label">YOUR SIGNATURE AESTHETIC</div>
+
+        <h2 id="aesthetic">Old Money</h2>
+
+        <p id="description">
+            Timeless elegance, understated luxury and effortless sophistication.
+        </p>
+
+    </section>
+
+    <h2 class="section-title">Your Signature Colours</h2>
+
+    <div class="palette" id="palette">
+        <div class="swatch" style="background:#641d32">Burgundy</div>
+        <div class="swatch" style="background:#d7bfa9">Beige</div>
+        <div class="swatch" style="background:#344b42">Forest</div>
+        <div class="swatch" style="background:#e8d9c8;color:#49382d">Cream</div>
+        <div class="swatch" style="background:#29374e">Navy</div>
+    </div>
+
+    <h2 class="section-title">Your Style Blueprint</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">👗</div>
+            <h3>Wardrobe Essentials</h3>
+            <p id="wardrobe">
+                Tailored blazers, classic trousers, elegant dresses and timeless basics.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💄</div>
+            <h3>Beauty Direction</h3>
+            <p id="beauty">
+                Natural makeup, glowing skin and understated elegance.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💍</div>
+            <h3>Accessories</h3>
+            <p id="accessories">
+                Delicate jewellery, structured handbags and classic watches.
+            </p>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Your Outfit Inspiration</h2>
+
+    <div class="grid">
+
+        <div class="outfit">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600" alt="Fashion outfit">
+            <div>
+                <h3>The Everyday Look</h3>
+                <p>Effortless combinations for everyday dressing.</p>
+            </div>
+        </div>
+
+        <div class="outfit">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600" alt="Fashion styling">
+            <div>
+                <h3>The Statement Look</h3>
+                <p>Make an impression with pieces that express your personality.</p>
+            </div>
+        </div>
+
+        <div class="outfit">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600" alt="Fashion wardrobe">
+            <div>
+                <h3>The Weekend Look</h3>
+                <p>Relaxed, comfortable and beautifully styled.</p>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <h2>THE LOOK EDIT.</h2>
+    <p>Discover your style. Define your identity. Wear your confidence.</p>
+</footer>
+
+<script>
+
+const styles = {
+
+"Old Money": {
+description:"Timeless elegance, understated luxury and effortless sophistication.",
+wardrobe:"Tailored blazers, classic trousers, neutral knits, structured dresses and timeless basics.",
+beauty:"Natural makeup, glowing skin, soft nude lips and understated elegance.",
+accessories:"Pearl earrings, delicate gold jewellery, structured handbags and classic watches.",
+colors:["#641d32","#d7bfa9","#344b42","#e8d9c8","#29374e"],
+names:["Burgundy","Caramel","Forest","Cream","Navy"]
+},
+
+"Coquette": {
+description:"Romantic, feminine and dreamy. Your style celebrates delicate details and playful elegance.",
+wardrobe:"Lace tops, satin skirts, soft dresses, cardigans and ballet flats.",
+beauty:"Rosy cheeks, glossy lips, soft blush tones and fluttery lashes.",
+accessories:"Ribbons, pearl necklaces, delicate bracelets and dainty handbags.",
+colors:["#e8a7b8","#d8c0e8","#f4d8d8","#fff0dc","#b77b91"],
+names:["Blush","Lavender","Rose","Ivory","Mauve"]
+},
+
+"Streetwear": {
+description:"Bold, expressive and unapologetically individual. Your fashion choices are your statement.",
+wardrobe:"Oversized jackets, graphic tees, baggy denim, cargo trousers and sneakers.",
+beauty:"Fresh skin, graphic eyeliner and experimental makeup.",
+accessories:"Statement sunglasses, chunky jewellery, caps and crossbody bags.",
+colors:["#171717","#a52e42","#687c9d","#d5bca2","#eeeeee"],
+names:["Black","Red","Steel Blue","Tan","White"]
+},
+
+"Minimalist": {
+description:"Clean, intentional and effortlessly chic. You find beauty in simplicity.",
+wardrobe:"Straight-leg trousers, white shirts, clean silhouettes and versatile basics.",
+beauty:"Glowing skin, subtle makeup, neutral tones and natural brows.",
+accessories:"Minimal gold jewellery, sleek watches and simple handbags.",
+colors:["#eee5d9","#b9a99a","#353535","#89958b","#ffffff"],
+names:["Ivory","Taupe","Charcoal","Sage","White"]
+},
+
+"Bohemian": {
+description:"Free-spirited, artistic and expressive. Your style embraces individuality and creativity.",
+wardrobe:"Flowy dresses, textured fabrics, relaxed blouses and layered outfits.",
+beauty:"Bronzed skin, earthy eyeshadow and natural makeup.",
+accessories:"Layered necklaces, statement rings, woven bags and textured accessories.",
+colors:["#9b593f","#c89a62","#64765b","#d9bd9a","#783d4a"],
+names:["Terracotta","Ochre","Olive","Sand","Wine"]
+},
+
+"Dark Feminine": {
+description:"Mysterious, confident and sophisticated. You embrace dramatic silhouettes and powerful details.",
+wardrobe:"Black dresses, fitted tops, tailored coats, sleek skirts and statement pieces.",
+beauty:"Smoky eyes, defined lashes, deep lipstick and luminous skin.",
+accessories:"Gold statement jewellery, pointed heels, sleek handbags and bold sunglasses.",
+colors:["#35101f","#641d32","#171717","#4a355b","#8a735d"],
+names:["Wine","Burgundy","Black","Plum","Bronze"]
+}
+
+};
+
+const selected = localStorage.getItem("selectedStyle") || "Old Money";
+
+const profile = styles[selected] || styles["Old Money"];
+
+document.getElementById("aesthetic").textContent =
+selected + " Aesthetic";
+
+document.getElementById("description").textContent =
+profile.description;
+
+document.getElementById("wardrobe").textContent =
+profile.wardrobe;
+
+document.getElementById("beauty").textContent =
+profile.beauty;
+
+document.getElementById("accessories").textContent =
+profile.accessories;
+
+document.getElementById("palette").innerHTML =
+profile.colors.map((color,index) => `
+<div class="swatch" style="background:${color}">
+${profile.names[index]}
+</div>
+`).join("");
+
+</script>
+
+</body>
+</html>

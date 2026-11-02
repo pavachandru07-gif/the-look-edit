@@ -1,0 +1,804 @@
+/* =========================================
+   THE LOOK EDIT — EDITORIAL COLOUR RUSH
+========================================= */
+
+:root {
+    --ivory: #fff9ef;
+    --white: #ffffff;
+    --black: #17121d;
+
+    --pink: #ff3e91;
+    --pink-light: #ffe0ed;
+
+    --blue: #3155e7;
+    --blue-light: #e1e8ff;
+
+    --orange: #ff762e;
+    --yellow: #ffe66d;
+
+    --red: #ed3154;
+    --plum: #32143d;
+
+    --green: #087f65;
+
+    --text: #211b27;
+    --muted: #77707a;
+}
+
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--pink);
+    color: white;
+}
+
+/* TOP ANNOUNCEMENT */
+
+.announcement {
+    background: var(--plum);
+    color: var(--yellow);
+    text-align: center;
+    padding: 11px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+/* HEADER */
+
+header {
+    background: var(--ivory);
+    padding: 22px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.logo,
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--pink);
+    font-style: italic;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+.discover-btn {
+    background: var(--pink);
+    color: white;
+    padding: 13px 20px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.discover-btn:hover {
+    background: var(--plum);
+    transform: translateY(-3px);
+}
+
+/* COMMON TEXT */
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+h2 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.12;
+}
+
+h2 em,
+h1 em {
+    font-weight: 400;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 680px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: var(--yellow);
+    overflow: hidden;
+}
+
+.hero-content {
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content .eyebrow {
+    color: var(--red);
+}
+
+.hero h1 {
+    font-size: clamp(55px, 7vw, 100px);
+    line-height: 1.02;
+    letter-spacing: -3px;
+}
+
+.hero h1 em {
+    color: var(--pink);
+}
+
+.hero-description {
+    margin: 28px 0;
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.primary-button {
+    display: inline-block;
+    width: fit-content;
+    border: none;
+    background: var(--plum);
+    color: white;
+    padding: 17px 27px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: var(--pink);
+    transform: translateY(-4px);
+}
+
+.hero-image {
+    position: relative;
+    min-height: 680px;
+}
+
+.hero-image img {
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    background: var(--pink);
+    color: white;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* INTRODUCTION */
+
+.introduction {
+    text-align: center;
+    padding: 115px 20px;
+    background: var(--pink);
+    color: white;
+}
+
+.introduction .eyebrow {
+    color: var(--yellow);
+}
+
+.introduction h2 {
+    margin-bottom: 25px;
+}
+
+.introduction h2 em {
+    color: var(--yellow);
+}
+
+.introduction > p:last-child {
+    max-width: 580px;
+    margin: auto;
+    line-height: 2;
+    font-size: 14px;
+}
+
+/* SECTION HEADINGS */
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.section-heading h2 {
+    font-size: 55px;
+}
+
+.section-number {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.text-link {
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.text-link:hover {
+    color: var(--blue);
+}
+
+/* RUNWAY */
+
+.runway-section {
+    padding: 110px 7%;
+    background: var(--ivory);
+}
+
+.runway-section .eyebrow {
+    color: var(--pink);
+}
+
+.runway-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 25px;
+}
+
+.runway-main,
+.runway-side {
+    position: relative;
+    overflow: hidden;
+}
+
+.runway-main img {
+    height: 560px;
+}
+
+.runway-side img {
+    height: 560px;
+}
+
+.runway-caption,
+.side-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 35px;
+    color: white;
+    background: linear-gradient(transparent, rgba(20, 5, 30, 0.85));
+}
+
+.runway-caption span,
+.side-caption span {
+    color: var(--yellow);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.runway-caption h3,
+.side-caption h3 {
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.runway-caption p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.section-note {
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* TREND REPORT */
+
+.trend-section {
+    padding: 110px 7%;
+    background: var(--blue);
+    color: white;
+}
+
+.trend-section .eyebrow {
+    color: var(--yellow);
+}
+
+.trend-section .section-number {
+    color: #d9ddff;
+}
+
+.trend-section .text-link {
+    color: var(--yellow);
+}
+
+.trend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.trend-card {
+    background: white;
+    color: var(--text);
+    transition: 0.3s;
+}
+
+.trend-card:hover {
+    transform: translateY(-8px);
+}
+
+.trend-card img {
+    height: 350px;
+}
+
+.trend-info {
+    padding: 28px;
+}
+
+.trend-info span {
+    font-size: 9px;
+    color: var(--pink);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.trend-info h3 {
+    font-size: 29px;
+    margin: 13px 0;
+}
+
+.trend-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* HAUTE COUTURE */
+
+.couture-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--plum);
+    color: white;
+}
+
+.couture-image {
+    min-height: 650px;
+}
+
+.couture-image img {
+    height: 100%;
+    min-height: 650px;
+}
+
+.couture-content {
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.couture-content .eyebrow {
+    color: var(--yellow);
+}
+
+.couture-content h2 em {
+    color: var(--pink);
+}
+
+.couture-content > p:not(.eyebrow) {
+    margin: 28px 0;
+    font-size: 14px;
+    line-height: 2;
+    color: #e8dce9;
+}
+
+.light-button {
+    display: inline-block;
+    width: fit-content;
+    background: var(--yellow);
+    color: var(--plum);
+    padding: 17px 25px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.light-button:hover {
+    background: var(--pink);
+    color: white;
+}
+
+/* FASHION CATEGORIES */
+
+.categories {
+    padding: 110px 7%;
+    background: var(--pink-light);
+}
+
+.categories .eyebrow {
+    color: var(--red);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.category-card {
+    height: 480px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card img {
+    height: 100%;
+    transition: 0.6s;
+}
+
+.category-card:hover img {
+    transform: scale(1.08);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 30px;
+    color: white;
+    background: linear-gradient(transparent, rgba(24, 5, 30, 0.9));
+}
+
+.category-overlay span {
+    color: var(--yellow);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.category-overlay h3 {
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.category-overlay p {
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.category-overlay a {
+    color: var(--yellow);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* BEAUTY */
+
+.beauty-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--orange);
+    color: white;
+}
+
+.beauty-image {
+    position: relative;
+    min-height: 570px;
+}
+
+.beauty-image img {
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.beauty-image .text-link {
+    position: absolute;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+    background: var(--yellow);
+    color: var(--plum);
+    padding: 14px 18px;
+}
+
+.beauty-content {
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.beauty-content .eyebrow {
+    color: var(--plum);
+}
+
+.beauty-content h2 em {
+    color: var(--yellow);
+}
+
+.beauty-content > p:not(.eyebrow) {
+    margin: 25px 0;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.beauty-content .text-link {
+    color: var(--plum);
+}
+
+/* PERSONAL STYLE */
+
+.discover-section {
+    padding: 130px 20px;
+    text-align: center;
+    background: var(--green);
+    color: white;
+}
+
+.discover-section .eyebrow {
+    color: var(--yellow);
+}
+
+.discover-section h2 em {
+    color: var(--yellow);
+}
+
+.discover-section > p:not(.eyebrow) {
+    max-width: 540px;
+    margin: 25px auto;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.discover-section .primary-button {
+    background: var(--yellow);
+    color: var(--plum);
+}
+
+.discover-section .primary-button:hover {
+    background: var(--pink);
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--black);
+    color: white;
+    padding: 70px 7% 30px;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 35px;
+}
+
+.footer-logo span {
+    color: var(--pink);
+}
+
+footer > p {
+    margin: 15px 0 30px;
+    color: #c7bbc9;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 30px 0 50px;
+}
+
+.footer-links a {
+    font-size: 11px;
+    color: var(--yellow);
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--pink);
+}
+
+.copyright {
+    padding-top: 25px;
+    border-top: 1px solid #403744;
+    color: #a99eaa;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1000px) {
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .hero {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content {
+        padding: 65px 7%;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    .hero,
+    .couture-section,
+    .beauty-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        padding: 75px 8%;
+    }
+
+    .hero-image {
+        min-height: 480px;
+    }
+
+    .hero-image img {
+        position: absolute;
+    }
+
+    .section-heading {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .section-heading h2 {
+        font-size: 42px;
+    }
+
+    .runway-grid,
+    .trend-grid,
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .runway-main img,
+    .runway-side img {
+        height: 450px;
+    }
+
+    .couture-image,
+    .couture-image img {
+        min-height: 420px;
+    }
+
+    .couture-content,
+    .beauty-content {
+        padding: 65px 8%;
+    }
+
+    .beauty-image {
+        min-height: 420px;
+    }
+
+    .category-card {
+        height: 430px;
+    }
+
+    .introduction,
+    .runway-section,
+    .trend-section,
+    .categories {
+        padding: 75px 7%;
+    }
+
+    .discover-section {
+        padding: 90px 7%;
+    }
+}

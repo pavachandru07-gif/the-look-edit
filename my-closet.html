@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Closet | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #632c43;
+    --pink: #e8c2c9;
+    --cream: #faf6f1;
+    --ink: #292027;
+    --muted: #897c82;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+header {
+    padding: 23px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eadfe0;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--wine);
+    letter-spacing: 3px;
+    font-size: 25px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: var(--wine);
+}
+
+.hero {
+    padding: 75px 8%;
+    background: #ead5d8;
+    text-align: center;
+}
+
+.hero span {
+    color: var(--wine);
+    letter-spacing: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 7vw, 75px);
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.hero p {
+    color: #66565d;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.container {
+    padding: 65px 8%;
+}
+
+.heading {
+    margin-bottom: 30px;
+}
+
+.heading span {
+    color: var(--wine);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 37px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 45px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border: 1px solid #eee4e3;
+}
+
+.stat h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    color: var(--wine);
+    font-weight: 400;
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.filters {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    border: 1px solid #d9c9ce;
+    background: transparent;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 11px;
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+}
+
+.primary-btn {
+    border: none;
+    background: var(--wine);
+    color: white;
+    padding: 13px 22px;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.primary-btn:hover {
+    background: #431d2e;
+}
+
+.wardrobe {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    position: relative;
+}
+
+.item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: #eee6e4;
+    display: block;
+}
+
+.item-info {
+    padding: 16px;
+}
+
+.item-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.item-info p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.delete {
+    border: none;
+    background: #f4e6e8;
+    color: var(--wine);
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+.empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 65px 20px;
+    color: var(--muted);
+    background: white;
+    line-height: 2;
+}
+
+.empty h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 400;
+    color: var(--wine);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(25, 15, 22, .65);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--cream);
+    width: 100%;
+    max-width: 440px;
+    padding: 35px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+.modal-content label {
+    display: block;
+    font-size: 12px;
+    margin: 15px 0 7px;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddcdd0;
+    background: white;
+    font-family: inherit;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.cancel {
+    border: 1px solid #cdbbc0;
+    background: transparent;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.colour-section {
+    background: #eee1e3;
+}
+
+.colours {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.colour {
+    width: 75px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.swatch {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    margin-bottom: 9px;
+    border: 3px solid white;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #292027;
+    color: white;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    font-weight: 400;
+}
+
+footer p {
+    color: #c9b9c0;
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+@media(max-width: 900px) {
+    .wardrobe {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .wardrobe {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 45px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE LOOK EDIT</div>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="screen-to-street.html">SCREEN TO STREET</a>
+        <a href="quiz.html">DISCOVER YOUR STYLE</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span>Your personal wardrobe</span>
+    <h1>My Closet.</h1>
+    <p>
+        A little space for everything you love to wear.
+        Organise your wardrobe, rediscover your pieces
+        and create looks that feel like you.
+    </p>
+</section>
+
+<main>
+
+<section class="container">
+
+    <div class="heading">
+        <span>The wardrobe diary</span>
+        <h2>Your collection.</h2>
+        <p>Everything you own, all in one beautiful place.</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <h3 id="totalItems">0</h3>
+            <p>Pieces in your wardrobe</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="totalCategories">0</h3>
+            <p>Categories explored</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="totalColours">0</h3>
+            <p>Different colours</p>
+        </div>
+    </div>
+
+    <div class="toolbar">
+
+        <div class="filters">
+            <button class="filter active" data-category="All">All</button>
+            <button class="filter" data-category="Tops">Tops</button>
+            <button class="filter" data-category="Bottoms">Bottoms</button>
+            <button class="filter" data-category="Dresses">Dresses</button>
+            <button class="filter" data-category="Shoes">Shoes</button>
+            <button class="filter" data-category="Bags">Bags</button>
+            <button class="filter" data-category="Accessories">Accessories</button>
+        </div>
+
+        <button class="primary-btn" onclick="openModal()">
+            + ADD A PIECE
+        </button>
+
+    </div>
+
+    <div class="wardrobe" id="wardrobe"></div>
+
+</section>
+
+<section class="container colour-section">
+
+    <div class="heading">
+        <span>Your colour story</span>
+        <h2>The colours you wear.</h2>
+        <p>Explore the colour palette of your wardrobe.</p>
+    </div>
+
+    <div class="colours" id="colours">
+        <p style="color:#897c82;font-size:13px;">
+            Add wardrobe pieces to discover your colour story.
+        </p>
+    </div>
+
+</section>
+
+</main>
+
+<div class="modal" id="addModal">
+
+    <div class="modal-content">
+
+        <h2>Add to your closet</h2>
+
+        <form id="itemForm">
+
+            <label>Item name</label>
+            <input type="text" id="itemName" placeholder="e.g. Satin blouse" required>
+
+            <label>Category</label>
+            <select id="itemCategory" required>
+                <option value="Tops">Tops</option>
+                <option value="Bottoms">Bottoms</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Bags">Bags</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+
+            <label>Colour</label>
+            <input type="text" id="itemColour" placeholder="e.g. Burgundy" required>
+
+            <label>Image URL</label>
+            <input type="url" id="itemImage" placeholder="Paste an image link" required>
+
+            <div class="modal-actions">
+                <button type="submit" class="primary-btn">SAVE PIECE</button>
+                <button type="button" class="cancel" onclick="closeModal()">CANCEL</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>Your wardrobe. Your rules. Your style.</p>
+    <p>© 2026 THE LOOK EDIT</p>
+</footer>
+
+<script>
+
+let items = JSON.parse(localStorage.getItem("myClosetItems")) || [];
+let currentCategory = "All";
+
+const wardrobe = document.getElementById("wardrobe");
+
+function saveItems() {
+    localStorage.setItem("myClosetItems", JSON.stringify(items));
+}
+
+function openModal() {
+    document.getElementById("addModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("addModal").style.display = "none";
+}
+
+document.getElementById("itemForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const newItem = {
+        id: Date.now(),
+        name: document.getElementById("itemName").value.trim(),
+        category: document.getElementById("itemCategory").value,
+        colour: document.getElementById("itemColour").value.trim(),
+        image: document.getElementById("itemImage").value.trim()
+    };
+
+    items.push(newItem);
+
+    saveItems();
+    renderItems();
+    this.reset();
+    closeModal();
+
+});
+
+function renderItems() {
+
+    wardrobe.innerHTML = "";
+
+    const filtered = currentCategory === "All"
+        ? items
+        : items.filter(item => item.category === currentCategory);
+
+    if (filtered.length === 0) {
+        wardrobe.innerHTML = `
+            <div class="empty">
+                <h3>Your closet is waiting.</h3>
+                <p>Add your first favourite piece to begin your collection.</p>
+            </div>
+        `;
+    }
+
+    filtered.forEach(item => {
+
+        const card = document.createElement("div");
+        card.className = "item";
+
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.name;
+
+        img.onerror = function() {
+            this.src = "https://placehold.co/600x600/f0e4e5/632c43?text=Image+Unavailable";
+        };
+
+        const info = document.createElement("div");
+        info.className = "item-info";
+
+        const title = document.createElement("h3");
+        title.textContent = item.name;
+
+        const details = document.createElement("p");
+        details.textContent = item.category + " · " + item.colour;
+
+        const remove = document.createElement("button");
+        remove.className = "delete";
+        remove.textContent = "REMOVE";
+        remove.addEventListener("click", () => deleteItem(item.id));
+
+        info.append(title, details, remove);
+        card.append(img, info);
+        wardrobe.appendChild(card);
+
+    });
+
+    updateStats();
+    updateColours();
+}
+
+function deleteItem(id) {
+
+    if (!confirm("Remove this piece from your closet?")) return;
+
+    items = items.filter(item => item.id !== id);
+
+    saveItems();
+    renderItems();
+}
+
+function updateStats() {
+
+    document.getElementById("totalItems").textContent = items.length;
+
+    const categories = new Set(items.map(item => item.category));
+    document.getElementById("totalCategories").textContent = categories.size;
+
+    const colours = new Set(items.map(item => item.colour.toLowerCase()));
+    document.getElementById("totalColours").textContent = colours.size;
+}
+
+function updateColours() {
+
+    const container = document.getElementById("colours");
+
+    if (items.length === 0) {
+        container.innerHTML = `
+            <p style="color:#897c82;font-size:13px;">
+                Add wardrobe pieces to discover your colour story.
+            </p>
+        `;
+        return;
+    }
+
+    const colourCounts = {};
+
+    items.forEach(item => {
+        const colour = item.colour.trim();
+
+        if (!colourCounts[colour]) {
+            colourCounts[colour] = 0;
+        }
+
+        colourCounts[colour]++;
+    });
+
+    container.innerHTML = "";
+
+    Object.entries(colourCounts).forEach(([colour, count]) => {
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "colour";
+
+        const swatch = document.createElement("div");
+        swatch.className = "swatch";
+
+        const knownColours = {
+            burgundy: "#800020",
+            pink: "#e8a5b5",
+            black: "#222222",
+            white: "#ffffff",
+            navy: "#17264b",
+            red: "#d62828",
+            blue: "#4267a9",
+            green: "#367653",
+            emerald: "#046b54",
+            purple: "#80549c",
+            lavender: "#b9a2d0",
+            beige: "#d8c3a5",
+            brown: "#795548",
+            cream: "#f5e6c8",
+            grey: "#999999",
+            gray: "#999999",
+            yellow: "#f0cf57",
+            orange: "#e98a40"
+        };
+
+        const matchedColour = Object.keys(knownColours).find(
+            key => colour.toLowerCase().includes(key)
+        );
+
+        swatch.style.background = matchedColour
+            ? knownColours[matchedColour]
+            : "#c9a5ad";
+
+        const label = document.createElement("p");
+        label.textContent = colour + " (" + count + ")";
+
+        wrapper.append(swatch, label);
+        container.appendChild(wrapper);
+    });
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        document.querySelectorAll(".filter").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        currentCategory = this.dataset.category;
+
+        renderItems();
+
+    });
+
+});
+
+document.getElementById("addModal").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+});
+
+renderItems();
+
+</script>
+
+</body>
+</html>

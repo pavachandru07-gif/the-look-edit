@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beauty Finder | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --wine: #681f3d;
+    --pink: #e9cbd7;
+    --cream: #faf6f1;
+    --ink: #292329;
+    --muted: #81747a;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+}
+
+nav {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: white;
+    border-bottom: 1px solid #eadfe3;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: var(--wine);
+}
+
+.nav-links {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #51474c;
+}
+
+.nav-links a:hover {
+    color: #a34268;
+}
+
+.hero {
+    min-height: 530px;
+    padding: 80px 9%;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(40,15,29,.85), rgba(40,15,29,.12)),
+    url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 23px;
+}
+
+.hero p {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 460px;
+    color: #f2e8ed;
+}
+
+.section {
+    padding: 75px 8%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.heading span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #a34a6d;
+}
+
+.heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 12px 0;
+}
+
+.heading p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+}
+
+.category-card {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.category-card:hover img {
+    transform: scale(1.08);
+}
+
+.category-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(25,15,20,.75));
+}
+
+.category-card div {
+    position: absolute;
+    z-index: 2;
+    bottom: 22px;
+    left: 20px;
+}
+
+.category-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.category-card p {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-top: 7px;
+}
+
+.finder-section {
+    background: white;
+}
+
+.search-box {
+    max-width: 580px;
+    margin: 0 auto 28px;
+    display: flex;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #dfcbd3;
+    font-family: inherit;
+    outline: none;
+}
+
+.search-box button {
+    padding: 15px 23px;
+    border: none;
+    background: var(--wine);
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.filters button {
+    background: transparent;
+    border: 1px solid #dfcbd3;
+    padding: 11px 18px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: #51474c;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.product-card {
+    border: 1px solid #eee4e8;
+    background: #fff;
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-content {
+    padding: 22px;
+}
+
+.product-content small {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #a34a6d;
+}
+
+.product-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.product-content p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    min-height: 62px;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    gap: 10px;
+}
+
+.product-actions a {
+    color: var(--wine);
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.save-btn {
+    background: #f2e5eb;
+    color: var(--wine);
+    padding: 10px 13px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.save-btn.saved {
+    background: var(--wine);
+    color: white;
+}
+
+.brands-section {
+    background: #eee2e7;
+}
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.brand-card {
+    background: white;
+    padding: 30px 15px;
+    text-align: center;
+    transition: .3s;
+}
+
+.brand-card:hover {
+    transform: translateY(-4px);
+}
+
+.brand-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 9px;
+}
+
+.brand-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.brand-card a {
+    display: inline-block;
+    margin-top: 17px;
+    color: var(--wine);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.saved-section {
+    background: white;
+}
+
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.saved-card {
+    border: 1px solid #eadfe3;
+    padding: 20px;
+}
+
+.saved-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.saved-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.remove-btn {
+    background: none;
+    color: #a04465;
+    text-decoration: underline;
+    margin-top: 15px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.inspiration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.inspiration-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.inspiration-card div {
+    padding: 17px;
+    background: white;
+}
+
+.inspiration-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.inspiration-card a {
+    text-decoration: none;
+    color: var(--wine);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.tip-box {
+    background: #f0e3e8;
+    padding: 40px;
+    text-align: center;
+    margin-top: 45px;
+}
+
+.tip-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.tip-box p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #66565e;
+}
+
+footer {
+    background: #251a21;
+    color: white;
+    padding: 45px;
+    text-align: center;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 3px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 11px;
+    color: #cbbcc3;
+}
+
+@media(max-width:850px) {
+    .category-grid,
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:550px) {
+    nav {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .section {
+        padding: 55px 5%;
+    }
+
+    .category-grid,
+    .product-grid,
+    .brand-grid,
+    .inspiration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        height: 330px;
+    }
+
+    .tip-box {
+        padding: 28px 18px;
+    }
+
+    .search-box button {
+        padding: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">THE LOOK EDIT</div>
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">THE LOOK EDIT BEAUTY DIRECTORY</div>
+        <h1>Beauty Is<br>Personal.</h1>
+        <p>
+            Discover the brands, products and little rituals
+            that make beauty your own. From everyday essentials
+            to experimental looks, find your next favourite.
+        </p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="heading">
+        <span>01 — EXPLORE</span>
+        <h2>Enter Your Beauty World</h2>
+        <p>Four corners of beauty, each with its own personality.</p>
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category-card" onclick="chooseCategory('skincare')">
+            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Skincare</h3>
+                <p>CARE · GLOW · RITUALS</p>
+            </div>
+        </div>
+
+        <div class="category-card" onclick="chooseCategory('makeup')">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Makeup</h3>
+                <p>COLOUR · CREATIVITY · EXPRESSION</p>
+            </div>
+        </div>
+
+        <div class="category-card" onclick="chooseCategory('fragrance')">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Fragrance</h3>
+                <p>SCENT · MEMORY · PERSONALITY</p>
+            </div>
+        </div>
+
+        <div class="category-card" onclick="chooseCategory('haircare')">
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Haircare</h3>
+                <p>TEXTURE · CARE · STYLE</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section finder-section" id="finder">
+    <div class="heading">
+        <span>02 — THE BEAUTY DIRECTORY</span>
+        <h2>Find Your Next Favourite</h2>
+        <p>Browse our sample discovery collection and save the products that catch your eye.</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products or beauty categories..." oninput="renderProducts()">
+        <button onclick="renderProducts()">SEARCH</button>
+    </div>
+
+    <div class="filters">
+        <button class="active" onclick="filterProducts('all',this)">ALL</button>
+        <button onclick="filterProducts('skincare',this)">SKINCARE</button>
+        <button onclick="filterProducts('makeup',this)">MAKEUP</button>
+        <button onclick="filterProducts('fragrance',this)">FRAGRANCE</button>
+        <button onclick="filterProducts('haircare',this)">HAIRCARE</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="section brands-section">
+    <div class="heading">
+        <span>03 — BRAND DIRECTORY</span>
+        <h2>Names to Know</h2>
+        <p>A starting point for discovering different beauty worlds.</p>
+    </div>
+
+    <div class="brand-grid">
+
+        <div class="brand-card">
+            <h3>Charlotte Tilbury</h3>
+            <p>Glamorous makeup and radiant beauty looks.</p>
+            <a href="https://www.charlottetilbury.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>Rare Beauty</h3>
+            <p>Expressive makeup and a modern approach to beauty.</p>
+            <a href="https://www.rarebeauty.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>The Ordinary</h3>
+            <p>Ingredient-focused skincare and simple formulations.</p>
+            <a href="https://theordinary.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>Fenty Beauty</h3>
+            <p>Inclusive makeup with bold colour and creativity.</p>
+            <a href="https://fentybeauty.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>Glossier</h3>
+            <p>Fresh, effortless beauty and everyday essentials.</p>
+            <a href="https://www.glossier.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>Laneige</h3>
+            <p>Skincare and hydration-focused beauty products.</p>
+            <a href="https://www.laneige.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>MAC Cosmetics</h3>
+            <p>Professional makeup, colour and artistry.</p>
+            <a href="https://www.maccosmetics.com/" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+        <div class="brand-card">
+            <h3>Dyson Beauty</h3>
+            <p>Beauty technology and innovative hair styling.</p>
+            <a href="https://www.dyson.com/hair-care" target="_blank">DISCOVER BRAND ↗</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="section saved-section">
+    <div class="heading">
+        <span>04 — YOUR COLLECTION</span>
+        <h2>My Beauty Wishlist</h2>
+        <p>Your saved beauty discoveries, all in one place.</p>
+    </div>
+
+    <div class="saved-grid" id="savedGrid">
+        <p style="font-size:13px;color:#81747a;">Your saved products will appear here.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="heading">
+        <span>05 — VISUAL INSPIRATION</span>
+        <h2>The Beauty Moodboard</h2>
+        <p>Save these aesthetics as inspiration for your next beauty look.</p>
+    </div>
+
+    <div class="inspiration-grid">
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Soft Glam</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=soft%20glam%20makeup" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Skincare Rituals</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=aesthetic%20skincare%20routine" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Fragrance Aesthetic</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=luxury%20perfume%20aesthetic" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tip-box">
+        <h3>Beauty Has No Single Formula</h3>
+        <p>
+            Trends can inspire you, but your beauty routine should
+            reflect your own preferences. Explore, experiment and
+            choose what feels right for you.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>Discover your style. Define your look. Make it yours.</p>
+</footer>
+
+<script>
+
+const products = [
+    {
+        id:1,
+        name:"Hydration Essentials",
+        brand:"Skincare Edit",
+        category:"skincare",
+        description:"A curated starting point for exploring moisturising skincare.",
+        image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=hydrating%20skincare%20products"
+    },
+    {
+        id:2,
+        name:"Everyday Glow",
+        brand:"Makeup Edit",
+        category:"makeup",
+        description:"Fresh, luminous makeup inspiration for everyday looks.",
+        image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=everyday%20glowy%20makeup"
+    },
+    {
+        id:3,
+        name:"Signature Scents",
+        brand:"Fragrance Edit",
+        category:"fragrance",
+        description:"Explore fragrance styles, notes and beautiful scent collections.",
+        image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=signature%20perfume%20collection"
+    },
+    {
+        id:4,
+        name:"Hair Rituals",
+        brand:"Haircare Edit",
+        category:"haircare",
+        description:"Discover haircare inspiration for different textures and styles.",
+        image:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=haircare%20routine%20inspiration"
+    },
+    {
+        id:5,
+        name:"The Lip Edit",
+        brand:"Makeup Edit",
+        category:"makeup",
+        description:"From soft pinks to statement reds, explore lip colour inspiration.",
+        image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=lipstick%20collection%20aesthetic"
+    },
+    {
+        id:6,
+        name:"The Serum Shelf",
+        brand:"Skincare Edit",
+        category:"skincare",
+        description:"An introduction to the world of facial serums and skincare ingredients.",
+        image:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=skincare%20serum%20aesthetic"
+    },
+    {
+        id:7,
+        name:"Floral Fragrance",
+        brand:"Fragrance Edit",
+        category:"fragrance",
+        description:"A visual introduction to delicate floral fragrance aesthetics.",
+        image:"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=floral%20perfume%20collection"
+    },
+    {
+        id:8,
+        name:"Hair Styling Edit",
+        brand:"Haircare Edit",
+        category:"haircare",
+        description:"Explore styling inspiration and hair finishing essentials.",
+        image:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=hair%20styling%20inspiration"
+    },
+    {
+        id:9,
+        name:"The Blush Edit",
+        brand:"Makeup Edit",
+        category:"makeup",
+        description:"A playful collection of blush shades and soft makeup inspiration.",
+        image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=85",
+        link:"https://www.pinterest.com/search/pins/?q=blush%20makeup%20aesthetic"
+    }
+];
+
+let currentCategory = "all";
+
+function renderProducts() {
+    const search = document.getElementById("searchInput").value.toLowerCase();
+
+    const filtered = products.filter(product => {
+        const matchesCategory =
+            currentCategory === "all" ||
+            product.category === currentCategory;
+
+        const matchesSearch =
+            product.name.toLowerCase().includes(search) ||
+            product.brand.toLowerCase().includes(search) ||
+            product.category.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    const saved = JSON.parse(localStorage.getItem("beautyFinderSaved")) || [];
+
+    const container = document.getElementById("productGrid");
+
+    if (filtered.length === 0) {
+        container.innerHTML =
+            '<p style="color:#81747a;">No discoveries found. Try another search.</p>';
+        return;
+    }
+
+    container.innerHTML = filtered.map(product => {
+        const isSaved = saved.some(item => item.id === product.id);
+
+        return `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}">
+
+                <div class="product-content">
+                    <small>${product.category.toUpperCase()}</small>
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+
+                    <div class="product-actions">
+                        <a href="${product.link}" target="_blank">
+                            EXPLORE ↗
+                        </a>
+
+                        <button
+                            class="save-btn ${isSaved ? 'saved' : ''}"
+                            onclick="toggleSave(${product.id})">
+                            ${isSaved ? '♥ SAVED' : '♡ SAVE'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+function filterProducts(category, button) {
+    currentCategory = category;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderProducts();
+}
+
+function chooseCategory(category) {
+    currentCategory = category;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.textContent.toLowerCase() === category
+        );
+    });
+
+    renderProducts();
+
+    document.getElementById("finder").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function toggleSave(id) {
+    let saved = JSON.parse(localStorage.getItem("beautyFinderSaved")) || [];
+
+    const existing = saved.find(item => item.id === id);
+
+    if (existing) {
+        saved = saved.filter(item => item.id !== id);
+    } else {
+        const product = products.find(item => item.id === id);
+        saved.push(product);
+    }
+
+    localStorage.setItem("beautyFinderSaved", JSON.stringify(saved));
+
+    renderProducts();
+    renderSaved();
+}
+
+function renderSaved() {
+    const saved = JSON.parse(localStorage.getItem("beautyFinderSaved")) || [];
+    const container = document.getElementById("savedGrid");
+
+    if (saved.length === 0) {
+        container.innerHTML =
+            '<p style="font-size:13px;color:#81747a;">Your saved beauty discoveries will appear here.</p>';
+        return;
+    }
+
+    container.innerHTML = saved.map(item => `
+        <div class="saved-card">
+            <h3>${item.name}</h3>
+            <p>${item.brand} · ${item.category}</p>
+            <button class="remove-btn" onclick="toggleSave(${item.id})">
+                REMOVE FROM WISHLIST
+            </button>
+        </div>
+    `).join("");
+}
+
+renderProducts();
+renderSaved();
+
+</script>
+
+</body>
+</html>

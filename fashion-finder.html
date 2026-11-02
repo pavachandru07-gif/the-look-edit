@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fashion Finder | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #651b35;
+    --rose: #d99aaa;
+    --cream: #faf6f2;
+    --ink: #292329;
+    --muted: #81777b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+nav {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: var(--wine);
+}
+
+nav a {
+    text-decoration: none;
+    color: #51464c;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-left: 17px;
+}
+
+nav a:hover {
+    color: #bd647f;
+}
+
+.hero {
+    padding: 85px 8%;
+    background: linear-gradient(120deg, #421629, #762c4b, #a45b76);
+    color: white;
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: #f0c8d5;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 76px);
+    font-weight: 400;
+}
+
+.hero p {
+    max-width: 550px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    color: #f1dfe5;
+    font-size: 14px;
+}
+
+.container {
+    padding: 65px 8%;
+}
+
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.description {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 17px 20px;
+    border: 1px solid #e7d9de;
+    background: white;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 25px;
+}
+
+.search-box:focus {
+    border-color: var(--wine);
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    padding: 11px 18px;
+    border: 1px solid #dfcbd2;
+    background: transparent;
+    color: #66545c;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+}
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.brand-card {
+    background: white;
+    overflow: hidden;
+    transition: .3s;
+    border: 1px solid #eee5e8;
+}
+
+.brand-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px #4d263012;
+}
+
+.brand-image {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background: #eee4e6;
+}
+
+.brand-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.brand-card:hover .brand-image img {
+    transform: scale(1.05);
+}
+
+.brand-info {
+    padding: 23px;
+}
+
+.brand-category {
+    color: #a66b80;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.brand-info p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--muted);
+    min-height: 44px;
+}
+
+.brand-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.brand-link {
+    text-decoration: none;
+    color: var(--wine);
+    font-size: 10px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 5px;
+}
+
+.save-btn {
+    border: none;
+    background: #f8edf1;
+    color: var(--wine);
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.save-btn.saved {
+    background: var(--wine);
+    color: white;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 50px;
+    color: var(--muted);
+    grid-column: 1 / -1;
+}
+
+.saved-section {
+    background: #f0e4e9;
+    padding: 60px 8%;
+}
+
+.saved-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.saved-section p {
+    color: #77656d;
+    font-size: 13px;
+    margin: 12px 0 25px;
+}
+
+.saved-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.saved-item {
+    background: white;
+    padding: 13px 20px;
+    font-size: 12px;
+    color: var(--wine);
+}
+
+footer {
+    padding: 35px;
+    text-align: center;
+    background: #321521;
+    color: #e9cbd5;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 850px) {
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+    .brand-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">THE LOOK EDIT.</div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="eyebrow">THE EDITOR'S DIRECTORY</div>
+    <h1>The Fashion Finder</h1>
+    <p>
+        Discover the labels, designers and creative minds
+        shaping the way we dress. Your next fashion obsession
+        starts here.
+    </p>
+</header>
+
+<main class="container">
+
+    <h2 class="section-heading">Find Your Next Favourite</h2>
+
+    <p class="description">
+        From established fashion houses to independent labels,
+        explore the world of fashion through our curated directory.
+    </p>
+
+    <input
+        type="text"
+        class="search-box"
+        id="searchInput"
+        placeholder="Search brands, designers or aesthetics..."
+    >
+
+    <div class="filters">
+        <button class="filter-btn active" data-filter="All">ALL</button>
+        <button class="filter-btn" data-filter="Luxury">LUXURY</button>
+        <button class="filter-btn" data-filter="Contemporary">CONTEMPORARY</button>
+        <button class="filter-btn" data-filter="Streetwear">STREETWEAR</button>
+        <button class="filter-btn" data-filter="Sustainable">SUSTAINABLE</button>
+        <button class="filter-btn" data-filter="Emerging">EMERGING</button>
+    </div>
+
+    <div class="brand-grid" id="brandGrid">
+
+        <div class="brand-card" data-category="Luxury">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800" alt="Fashion editorial">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Luxury Fashion</span>
+                <h3>Chanel</h3>
+                <p>Timeless elegance, iconic tailoring and a legacy of modern femininity.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="https://www.chanel.com/" target="_blank">EXPLORE BRAND ↗</a>
+                    <button class="save-btn" data-name="Chanel">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-card" data-category="Luxury">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800" alt="Designer fashion">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Luxury Fashion</span>
+                <h3>Prada</h3>
+                <p>Intellectual fashion, unexpected details and contemporary sophistication.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="https://www.prada.com/" target="_blank">EXPLORE BRAND ↗</a>
+                    <button class="save-btn" data-name="Prada">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-card" data-category="Contemporary">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="Contemporary street fashion">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Contemporary</span>
+                <h3>COS</h3>
+                <p>Minimal silhouettes, thoughtful design and understated everyday luxury.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="https://www.cos.com/" target="_blank">EXPLORE BRAND ↗</a>
+                    <button class="save-btn" data-name="COS">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-card" data-category="Streetwear">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=800" alt="Streetwear fashion">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Streetwear</span>
+                <h3>Stüssy</h3>
+                <p>Relaxed street culture, graphic identity and effortless everyday style.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="https://www.stussy.com/" target="_blank">EXPLORE BRAND ↗</a>
+                    <button class="save-btn" data-name="Stüssy">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-card" data-category="Sustainable">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=800" alt="Sustainable fashion">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Sustainable Fashion</span>
+                <h3>Stella McCartney</h3>
+                <p>Luxury fashion with a focus on responsible materials and innovation.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="https://www.stellamccartney.com/" target="_blank">EXPLORE BRAND ↗</a>
+                    <button class="save-btn" data-name="Stella McCartney">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-card" data-category="Emerging">
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" alt="Emerging designer fashion">
+            </div>
+            <div class="brand-info">
+                <span class="brand-category">Emerging Designers</span>
+                <h3>Independent Labels</h3>
+                <p>A space for fresh creative voices and designers doing things differently.</p>
+                <div class="brand-actions">
+                    <a class="brand-link" href="#saved">DISCOVER MORE ↓</a>
+                    <button class="save-btn" data-name="Independent Labels">♡ SAVE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-message" id="emptyMessage">
+            No brands found. Try another search.
+        </div>
+
+    </div>
+
+</main>
+
+<section class="saved-section" id="saved">
+    <h2>Your Saved Labels</h2>
+    <p>Keep the designers and brands you love in one place.</p>
+
+    <div class="saved-list" id="savedList">
+        <span class="saved-item">Your collection is waiting ♡</span>
+    </div>
+</section>
+
+<footer>
+    THE LOOK EDIT. &nbsp; | &nbsp; A WORLD OF PERSONAL STYLE.
+</footer>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".brand-card");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const emptyMessage = document.getElementById("emptyMessage");
+const savedList = document.getElementById("savedList");
+
+let activeFilter = "All";
+
+let savedBrands = JSON.parse(
+    localStorage.getItem("savedFashionBrands")
+) || [];
+
+function renderSaved() {
+    savedList.innerHTML = "";
+
+    if (savedBrands.length === 0) {
+        savedList.innerHTML =
+            '<span class="saved-item">Your collection is waiting ♡</span>';
+    }
+
+    savedBrands.forEach(brand => {
+        const item = document.createElement("span");
+        item.className = "saved-item";
+        item.textContent = "♡ " + brand;
+        savedList.appendChild(item);
+    });
+
+    document.querySelectorAll(".save-btn").forEach(button => {
+        const name = button.dataset.name;
+        const isSaved = savedBrands.includes(name);
+
+        button.textContent = isSaved ? "♥ SAVED" : "♡ SAVE";
+        button.classList.toggle("saved", isSaved);
+    });
+}
+
+function filterBrands() {
+    const search = searchInput.value.toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const category = card.dataset.category;
+        const text = card.textContent.toLowerCase();
+
+        const matchesCategory =
+            activeFilter === "All" || category === activeFilter;
+
+        const matchesSearch = text.includes(search);
+
+        const show = matchesCategory && matchesSearch;
+
+        card.style.display = show ? "block" : "none";
+
+        if (show) visibleCount++;
+    });
+
+    emptyMessage.style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+
+        filterBrands();
+    });
+});
+
+searchInput.addEventListener("input", filterBrands);
+
+document.querySelectorAll(".save-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        const name = button.dataset.name;
+
+        if (savedBrands.includes(name)) {
+            savedBrands = savedBrands.filter(
+                brand => brand !== name
+            );
+        } else {
+            savedBrands.push(name);
+        }
+
+        localStorage.setItem(
+            "savedFashionBrands",
+            JSON.stringify(savedBrands)
+        );
+
+        renderSaved();
+    });
+});
+
+renderSaved();
+</script>
+
+</body>
+</html>

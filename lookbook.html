@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lookbook | The Look Edit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine:#68243c;
+    --cream:#faf6f1;
+    --pink:#ead5d9;
+    --ink:#272124;
+    --muted:#81777a;
+    --line:#e9dedb;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'DM Sans',sans-serif;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+nav {
+    padding:22px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    background:#fffdfa;
+    border-bottom:1px solid var(--line);
+}
+
+.logo {
+    font-family:'Playfair Display',serif;
+    color:var(--wine);
+    font-size:25px;
+    letter-spacing:2px;
+}
+
+.navlinks {
+    display:flex;
+    gap:19px;
+    flex-wrap:wrap;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.navlinks a:hover {
+    color:var(--wine);
+}
+
+.hero {
+    min-height:550px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#e8d5d5;
+}
+
+.hero-text {
+    padding:80px 12%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.eyebrow {
+    font-size:10px;
+    color:var(--wine);
+    letter-spacing:3px;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.hero h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(50px,6vw,80px);
+    line-height:1.05;
+    font-weight:500;
+}
+
+.hero h1 em {
+    color:var(--wine);
+}
+
+.hero p {
+    color:#695a5e;
+    font-size:13px;
+    line-height:1.9;
+    margin:24px 0;
+    max-width:420px;
+}
+
+.button {
+    display:inline-block;
+    background:var(--wine);
+    color:white;
+    padding:15px 25px;
+    width:fit-content;
+    border:none;
+    font-size:10px;
+    letter-spacing:2px;
+    cursor:pointer;
+}
+
+.hero-image {
+    min-height:550px;
+    background:url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85') center/cover;
+}
+
+.section {
+    padding:85px 7%;
+}
+
+.heading {
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.heading span {
+    color:var(--wine);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.heading h2 {
+    font-family:'Playfair Display',serif;
+    font-size:43px;
+    font-weight:500;
+    margin:12px 0;
+}
+
+.heading p {
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.editorial {
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:25px;
+    align-items:stretch;
+}
+
+.editorial-main {
+    min-height:480px;
+    position:relative;
+    overflow:hidden;
+}
+
+.editorial-main img,
+.editorial-side img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+}
+
+.editorial-main::after,
+.editorial-side::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,#0009);
+}
+
+.editorial-caption {
+    position:absolute;
+    z-index:2;
+    bottom:35px;
+    left:30px;
+    color:white;
+}
+
+.editorial-caption span {
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.editorial-caption h3 {
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    font-weight:500;
+    margin-top:10px;
+}
+
+.editorial-side {
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    gap:20px;
+}
+
+.editorial-small {
+    min-height:230px;
+    position:relative;
+    overflow:hidden;
+}
+
+.editorial-small h3 {
+    position:absolute;
+    z-index:2;
+    bottom:20px;
+    left:22px;
+    color:white;
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    font-weight:500;
+}
+
+.filters {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    margin:25px 0 35px;
+}
+
+.filter {
+    background:transparent;
+    border:1px solid #d8c7c9;
+    padding:11px 17px;
+    font-family:inherit;
+    font-size:9px;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+.filter.active,
+.filter:hover {
+    background:var(--wine);
+    color:white;
+    border-color:var(--wine);
+}
+
+.look-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px 22px;
+}
+
+.look-card {
+    background:white;
+    padding-bottom:20px;
+}
+
+.look-image {
+    height:380px;
+    overflow:hidden;
+    position:relative;
+    background:#eee;
+}
+
+.look-image img {
+    height:100%;
+    width:100%;
+    object-fit:cover;
+    transition:transform .5s;
+}
+
+.look-card:hover .look-image img {
+    transform:scale(1.05);
+}
+
+.look-number {
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:#fffaf3;
+    color:var(--wine);
+    padding:8px 11px;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.look-info {
+    padding:19px 17px 0;
+}
+
+.look-info span {
+    color:var(--wine);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.look-info h3 {
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+    font-size:24px;
+    margin:9px 0;
+}
+
+.look-info p {
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.8;
+    min-height:40px;
+}
+
+.look-actions {
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:17px;
+}
+
+.save-btn,
+.pin-btn {
+    padding:11px 13px;
+    font-size:9px;
+    letter-spacing:1px;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.save-btn {
+    background:white;
+    color:var(--wine);
+    border:1px solid var(--wine);
+}
+
+.save-btn.saved {
+    background:var(--wine);
+    color:white;
+}
+
+.pin-btn {
+    background:var(--wine);
+    color:white;
+    border:1px solid var(--wine);
+}
+
+.story {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:420px;
+    background:#27313b;
+    color:white;
+}
+
+.story-image {
+    background:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85') center/cover;
+}
+
+.story-text {
+    padding:65px 12%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.story-text span {
+    color:#e6b9c6;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.story-text h2 {
+    font-family:'Playfair Display',serif;
+    font-size:43px;
+    font-weight:500;
+    margin:18px 0;
+}
+
+.story-text p {
+    color:#d4d0d1;
+    font-size:12px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+.pinterest-gallery {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.pin-card {
+    height:280px;
+    position:relative;
+    overflow:hidden;
+}
+
+.pin-card img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .5s;
+}
+
+.pin-card:hover img {
+    transform:scale(1.07);
+}
+
+.pin-card span {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    color:white;
+    padding:25px 12px 14px;
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    background:linear-gradient(transparent,#0009);
+}
+
+.saved-section {
+    background:#f0e3e3;
+}
+
+.saved-count {
+    color:var(--wine);
+    font-size:12px;
+    margin-top:10px;
+}
+
+.empty {
+    grid-column:1/-1;
+    text-align:center;
+    padding:50px;
+    font-family:'Playfair Display',serif;
+    color:var(--muted);
+    font-size:23px;
+}
+
+footer {
+    background:#24191d;
+    color:white;
+    text-align:center;
+    padding:45px 7%;
+}
+
+footer h2 {
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+    font-size:30px;
+    letter-spacing:2px;
+}
+
+footer p {
+    color:#c7b8bc;
+    font-size:10px;
+    margin-top:12px;
+    letter-spacing:1px;
+}
+
+@media(max-width:850px) {
+    .look-grid {
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .pinterest-gallery {
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px) {
+    nav {
+        justify-content:center;
+    }
+
+    .hero,
+    .story,
+    .editorial {
+        grid-template-columns:1fr;
+    }
+
+    .hero-text {
+        padding:65px 8%;
+    }
+
+    .hero-image {
+        min-height:380px;
+    }
+
+    .editorial-main {
+        min-height:380px;
+    }
+
+    .editorial-side {
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:1fr;
+    }
+
+    .editorial-small {
+        min-height:200px;
+    }
+
+    .look-grid {
+        grid-template-columns:1fr;
+    }
+
+    .look-image {
+        height:430px;
+    }
+
+    .section {
+        padding:60px 6%;
+    }
+
+    .heading h2 {
+        font-size:35px;
+    }
+
+    .story-image {
+        min-height:330px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="logo">THE LOOK EDIT</a>
+
+    <div class="navlinks">
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+        <a href="shopping-edit.html">SHOPPING</a>
+        <a href="lookbook.html">LOOKBOOK</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-text">
+        <span class="eyebrow">THE LOOK EDIT · STYLE ARCHIVE</span>
+
+        <h1>Every Look<br>Tells a <em>Story.</em></h1>
+
+        <p>
+            An ever-evolving collection of outfits, aesthetics,
+            silhouettes and styling ideas. Find a look that
+            feels like you, or discover someone new.
+        </p>
+
+        <a href="#looks" class="button">EXPLORE THE LOOKBOOK</a>
+    </div>
+
+    <div class="hero-image"></div>
+</header>
+
+<section class="section">
+    <div class="heading">
+        <span>THE EDITOR'S SELECTION</span>
+        <h2>Currently on Our Moodboard.</h2>
+        <p>A few visual stories we're loving right now.</p>
+    </div>
+
+    <div class="editorial">
+        <a class="editorial-main"
+           href="https://www.pinterest.com/search/pins/?q=editorial%20fashion%20lookbook"
+           target="_blank">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85" alt="Editorial fashion inspiration">
+            <div class="editorial-caption">
+                <span>01 · THE BIG PICTURE</span>
+                <h3>The New Elegance</h3>
+            </div>
+        </a>
+
+        <div class="editorial-side">
+            <a class="editorial-small"
+               href="https://www.pinterest.com/search/pins/?q=dark%20feminine%20fashion"
+               target="_blank">
+                <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=85" alt="Dark fashion inspiration">
+                <h3>Dark Romance</h3>
+            </a>
+
+            <a class="editorial-small"
+               href="https://www.pinterest.com/search/pins/?q=minimalist%20fashion%20outfits"
+               target="_blank">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85" alt="Minimal fashion inspiration">
+                <h3>Less, But Better</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="looks">
+    <div class="heading">
+        <span>THE OUTFIT ARCHIVE</span>
+        <h2>Find Your Next Look.</h2>
+        <p>Explore different moods and save the outfits you love.</p>
+    </div>
+
+    <div class="filters">
+        <button class="filter active" onclick="setFilter('all',this)">ALL LOOKS</button>
+        <button class="filter" onclick="setFilter('minimal',this)">MINIMAL</button>
+        <button class="filter" onclick="setFilter('romantic',this)">ROMANTIC</button>
+        <button class="filter" onclick="setFilter('streetwear',this)">STREETWEAR</button>
+        <button class="filter" onclick="setFilter('classic',this)">CLASSIC</button>
+        <button class="filter" onclick="setFilter('bold',this)">BOLD</button>
+        <button class="filter" onclick="setFilter('evening',this)">EVENING</button>
+    </div>
+
+    <div class="look-grid" id="lookGrid"></div>
+</section>
+
+<section class="story">
+    <div class="story-image"></div>
+
+    <div class="story-text">
+        <span>THE SEASONAL STORY</span>
+        <h2>Soft Layers.<br>Strong Presence.</h2>
+        <p>
+            Think oversized tailoring, beautiful textures,
+            muted colours and unexpected details. The art
+            of looking put together without looking like
+            you tried too hard.
+        </p>
+
+        <a class="button"
+           href="https://www.pinterest.com/search/pins/?q=autumn%20winter%20fashion%20lookbook"
+           target="_blank">
+            EXPLORE THE STORY
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="heading">
+        <span>THE VISUAL DIARY</span>
+        <h2>Four Moods. Endless Possibilities.</h2>
+        <p>Explore each aesthetic through visual inspiration.</p>
+    </div>
+
+    <div class="pinterest-gallery">
+        <a class="pin-card"
+           href="https://www.pinterest.com/search/pins/?q=old%20money%20fashion%20aesthetic"
+           target="_blank">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Classic fashion">
+            <span>Old Money</span>
+        </a>
+
+        <a class="pin-card"
+           href="https://www.pinterest.com/search/pins/?q=coquette%20fashion%20aesthetic"
+           target="_blank">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Romantic fashion">
+            <span>Coquette</span>
+        </a>
+
+        <a class="pin-card"
+           href="https://www.pinterest.com/search/pins/?q=streetwear%20fashion%20aesthetic"
+           target="_blank">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Streetwear">
+            <span>Street Style</span>
+        </a>
+
+        <a class="pin-card"
+           href="https://www.pinterest.com/search/pins/?q=quiet%20luxury%20outfits"
+           target="_blank">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Quiet luxury">
+            <span>Quiet Luxury</span>
+        </a>
+    </div>
+</section>
+
+<section class="section saved-section">
+    <div class="heading">
+        <span>YOUR PERSONAL STYLE ARCHIVE</span>
+        <h2>Looks You've Fallen For.</h2>
+        <p>Your favourite outfits, collected in one place.</p>
+        <div class="saved-count" id="savedCount">0 saved looks</div>
+    </div>
+
+    <div class="look-grid" id="savedGrid"></div>
+</section>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>FASHION IS A LANGUAGE. MAKE IT YOURS.</p>
+    <p>DISCOVER · EXPLORE · EXPRESS</p>
+</footer>
+
+<script>
+const looks = [
+    {
+        id:1,
+        name:"The City Minimalist",
+        category:"minimal",
+        description:"Clean lines, relaxed tailoring and a neutral palette for everyday sophistication.",
+        image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:2,
+        name:"Modern Romantic",
+        category:"romantic",
+        description:"Soft fabrics, feminine silhouettes and delicate details with a contemporary edge.",
+        image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:3,
+        name:"Off-Duty Energy",
+        category:"streetwear",
+        description:"Relaxed layers, statement sneakers and an effortless street-style attitude.",
+        image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:4,
+        name:"The Timeless Classic",
+        category:"classic",
+        description:"A wardrobe built around elegant shapes, versatile pieces and lasting appeal.",
+        image:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:5,
+        name:"Colour After Dark",
+        category:"bold",
+        description:"Confident colour, dramatic proportions and accessories that make a statement.",
+        image:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:6,
+        name:"The Evening Edit",
+        category:"evening",
+        description:"Elegant evening inspiration with refined details and a little drama.",
+        image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:7,
+        name:"Weekend in the City",
+        category:"minimal",
+        description:"Easy separates, comfortable proportions and understated accessories.",
+        image:"https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:8,
+        name:"A Little Drama",
+        category:"romantic",
+        description:"A playful mix of statement details, movement and beautiful textures.",
+        image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:9,
+        name:"The Street Muse",
+        category:"streetwear",
+        description:"An expressive everyday look inspired by city dressing and modern proportions.",
+        image:"https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:10,
+        name:"After Hours",
+        category:"evening",
+        description:"A polished evening mood with strong silhouettes and refined styling.",
+        image:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:11,
+        name:"Power Dressing",
+        category:"bold",
+        description:"Structured pieces and confident styling for a memorable entrance.",
+        image:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=85"
+    },
+    {
+        id:12,
+        name:"Quietly Polished",
+        category:"classic",
+        description:"A considered combination of timeless staples and understated elegance.",
+        image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"
+    }
+];
+
+let activeFilter = "all";
+
+let savedLooks = JSON.parse(
+    localStorage.getItem("lookbookSavedLooks") || "[]"
+);
+
+function createCard(item) {
+    const saved = savedLooks.includes(item.id);
+
+    return `
+        <article class="look-card">
+            <div class="look-image">
+                <img src="${item.image}" alt="${item.name}" loading="lazy">
+                <span class="look-number">LOOK Nº ${String(item.id).padStart(2,"0")}</span>
+            </div>
+
+            <div class="look-info">
+                <span>${item.category} EDIT</span>
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+
+                <div class="look-actions">
+                    <button class="save-btn ${saved ? "saved" : ""}"
+                        onclick="toggleSave(${item.id})">
+                        ${saved ? "♥ SAVED" : "♡ SAVE LOOK"}
+                    </button>
+
+                    <a class="pin-btn"
+                       href="https://www.pinterest.com/search/pins/?q=${encodeURIComponent(item.name + " outfit aesthetic")}"
+                       target="_blank" rel="noopener">
+                       FIND INSPIRATION ↗
+                    </a>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function renderLooks() {
+    const grid = document.getElementById("lookGrid");
+
+    const filtered = looks.filter(item =>
+        activeFilter === "all" || item.category === activeFilter
+    );
+
+    grid.innerHTML = filtered.length
+        ? filtered.map(createCard).join("")
+        : '<div class="empty">No looks found.</div>';
+}
+
+function renderSaved() {
+    const grid = document.getElementById("savedGrid");
+    const saved = looks.filter(item => savedLooks.includes(item.id));
+
+    document.getElementById("savedCount").textContent =
+        `${saved.length} saved ${saved.length === 1 ? "look" : "looks"}`;
+
+    grid.innerHTML = saved.length
+        ? saved.map(createCard).join("")
+        : '<div class="empty">Your style archive is waiting for its first look. ♡</div>';
+}
+
+function setFilter(category, button) {
+    activeFilter = category;
+
+    document.querySelectorAll(".filter").forEach(item =>
+        item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+    renderLooks();
+}
+
+function toggleSave(id) {
+    if (savedLooks.includes(id)) {
+        savedLooks = savedLooks.filter(item => item !== id);
+    } else {
+        savedLooks.push(id);
+    }
+
+    localStorage.setItem(
+        "lookbookSavedLooks",
+        JSON.stringify(savedLooks)
+    );
+
+    renderLooks();
+    renderSaved();
+}
+
+renderLooks();
+renderSaved();
+</script>
+
+</body>
+</html>

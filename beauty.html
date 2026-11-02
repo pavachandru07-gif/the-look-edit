@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beauty Edit | THE LOOK EDIT</title>
+    <link rel="stylesheet" href="style.css">
+
+```
+<style>
+    .beauty-hero {
+        min-height: 590px;
+        background:
+            linear-gradient(90deg, rgba(47, 20, 34, .72), rgba(47, 20, 34, .05)),
+            url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2000&q=90");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        padding: 8%;
+        color: white;
+    }
+
+    .beauty-hero-content {
+        max-width: 620px;
+    }
+
+    .beauty-hero span {
+        font-size: 11px;
+        letter-spacing: 4px;
+    }
+
+    .beauty-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(48px, 7vw, 85px);
+        line-height: 1.08;
+        margin: 22px 0;
+    }
+
+    .beauty-hero p {
+        max-width: 440px;
+        line-height: 1.9;
+        font-size: 15px;
+    }
+
+    .beauty-section {
+        padding: 85px 8%;
+    }
+
+    .beauty-heading {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .beauty-heading span {
+        color: #a15e78;
+        letter-spacing: 3px;
+        font-size: 11px;
+    }
+
+    .beauty-heading h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(32px, 4vw, 48px);
+        margin-top: 13px;
+    }
+
+    .beauty-heading p {
+        max-width: 540px;
+        margin: 15px auto 0;
+        line-height: 1.8;
+        opacity: .7;
+    }
+
+    .beauty-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .beauty-card {
+        background: #fff9f7;
+        overflow: hidden;
+    }
+
+    .beauty-card img {
+        width: 100%;
+        height: 370px;
+        object-fit: cover;
+        display: block;
+        transition: transform .5s ease;
+    }
+
+    .beauty-card:hover img {
+        transform: scale(1.04);
+    }
+
+    .beauty-card-content {
+        padding: 25px;
+    }
+
+    .beauty-card-content span {
+        color: #a15e78;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .beauty-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 25px;
+        margin: 12px 0;
+    }
+
+    .beauty-card p {
+        font-size: 13px;
+        line-height: 1.8;
+        opacity: .72;
+    }
+
+    .beauty-feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #ead6dc;
+    }
+
+    .beauty-feature img {
+        width: 100%;
+        height: 570px;
+        object-fit: cover;
+    }
+
+    .beauty-feature-content {
+        padding: 12%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .beauty-feature-content span {
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: #8b4b64;
+    }
+
+    .beauty-feature-content h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 4vw, 55px);
+        line-height: 1.15;
+        margin: 20px 0;
+    }
+
+    .beauty-feature-content p {
+        font-size: 14px;
+        line-height: 1.9;
+        opacity: .8;
+    }
+
+    .beauty-quote {
+        background: #392435;
+        color: #fff5f3;
+        padding: 85px 10%;
+        text-align: center;
+    }
+
+    .beauty-quote h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(30px, 4vw, 48px);
+        font-weight: normal;
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.4;
+    }
+
+    .beauty-quote p {
+        margin-top: 25px;
+        letter-spacing: 3px;
+        font-size: 10px;
+        color: #e4b4c3;
+    }
+
+    @media(max-width: 850px) {
+        .beauty-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .beauty-feature {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media(max-width: 550px) {
+        .beauty-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .beauty-card img {
+            height: 320px;
+        }
+
+        .beauty-feature img {
+            height: 380px;
+        }
+
+        .beauty-hero {
+            min-height: 480px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="announcement">
+    THE ART OF FASHION · THE LANGUAGE OF STYLE
+</div>
+
+<header class="navbar">
+    <a href="index.html" class="logo">THE LOOK EDIT<span>.</span></a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="runway.html">The Runway Edit</a>
+        <a href="trends.html">Trend Report</a>
+        <a href="index.html#couture">Haute Couture</a>
+        <a href="index.html#fashion">Fashion</a>
+        <a href="beauty.html">Beauty</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="beauty-hero">
+        <div class="beauty-hero-content">
+            <span>THE BEAUTY EDIT · BEYOND THE SURFACE</span>
+            <h1>Beauty in Every Detail.</h1>
+            <p>
+                A celebration of skincare rituals, expressive makeup,
+                beautiful textures and the art of feeling confident
+                in your own skin.
+            </p>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+
+    <section class="beauty-section">
+        <div class="beauty-heading">
+            <span>WELCOME TO THE BEAUTY EDIT</span>
+            <h2>Your Beauty, Your Expression.</h2>
+            <p>
+                From everyday skincare to statement makeup,
+                discover inspiration, explore new ideas and
+                create a beauty routine that feels like you.
+            </p>
+        </div>
+
+        <div class="beauty-grid">
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85" alt="Skincare products">
+                <div class="beauty-card-content">
+                    <span>01 · SKINCARE</span>
+                    <h3>The Skin Journal</h3>
+                    <p>
+                        Explore cleansing, hydration, moisturising
+                        and the little rituals behind a thoughtful
+                        skincare routine.
+                    </p>
+                </div>
+            </article>
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=900&q=85" alt="Makeup collection">
+                <div class="beauty-card-content">
+                    <span>02 · MAKEUP</span>
+                    <h3>The Makeup Edit</h3>
+                    <p>
+                        From soft everyday looks to bold evening
+                        makeup, find inspiration for every mood.
+                    </p>
+                </div>
+            </article>
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=85" alt="Perfume bottle">
+                <div class="beauty-card-content">
+                    <span>03 · FRAGRANCE</span>
+                    <h3>The Scent Story</h3>
+                    <p>
+                        Discover the world of fragrance, from
+                        delicate florals to warm and woody notes.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FEATURE -->
+
+    <section class="beauty-feature">
+
+        <img
+            src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=90"
+            alt="Beauty and makeup inspiration">
+
+        <div class="beauty-feature-content">
+            <span>THE ART OF SELF-EXPRESSION</span>
+
+            <h2>Makeup Is an Art. You Are the Canvas.</h2>
+
+            <p>
+                A little colour, a different texture or a new
+                technique can completely transform a look.
+                Explore beauty as a form of creativity rather
+                than a set of rules.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- BEAUTY INSPIRATION -->
+
+    <section class="beauty-section">
+
+        <div class="beauty-heading">
+            <span>THE INSPIRATION BOARD</span>
+            <h2>Beauty Moods to Explore.</h2>
+            <p>
+                Different moods, different expressions.
+                Find a look that matches the moment.
+            </p>
+        </div>
+
+        <div class="beauty-grid">
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=85" alt="Natural makeup inspiration">
+                <div class="beauty-card-content">
+                    <span>BEAUTY MOOD · 01</span>
+                    <h3>Soft & Natural</h3>
+                    <p>
+                        Fresh-looking makeup, subtle colour
+                        and an effortless everyday aesthetic.
+                    </p>
+                </div>
+            </article>
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=85" alt="Colourful makeup inspiration">
+                <div class="beauty-card-content">
+                    <span>BEAUTY MOOD · 02</span>
+                    <h3>Colour Play</h3>
+                    <p>
+                        Expressive shades, creative details
+                        and a little room to experiment.
+                    </p>
+                </div>
+            </article>
+
+            <article class="beauty-card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85" alt="Editorial beauty inspiration">
+                <div class="beauty-card-content">
+                    <span>BEAUTY MOOD · 03</span>
+                    <h3>Editorial Glam</h3>
+                    <p>
+                        Dramatic details, polished finishes
+                        and beauty inspired by fashion editorials.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+
+    <section class="beauty-quote">
+        <h2>
+            "Beauty is not about becoming someone else.
+            It is about expressing who you already are."
+        </h2>
+        <p>THE LOOK EDIT · A DIFFERENT KIND OF BEAUTY</p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <a href="index.html" class="footer-logo">THE LOOK EDIT.</a>
+    <p>Style is personal. Make it yours.</p>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="runway.html">Runway</a>
+        <a href="trends.html">Trends</a>
+        <a href="beauty.html">Beauty</a>
+    </div>
+
+    <p class="copyright">© 2026 THE LOOK EDIT. ALL RIGHTS RESERVED.</p>
+</footer>
+```
+
+</body>
+</html>

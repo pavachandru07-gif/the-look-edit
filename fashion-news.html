@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fashion Newsroom | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--wine:#681f3d;
+--cream:#faf6f1;
+--pink:#ead4dc;
+--ink:#292329;
+--muted:#81747a;
+}
+
+body{
+font-family:'DM Sans',sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+nav{
+padding:22px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+background:white;
+border-bottom:1px solid #eadfe3;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:25px;
+letter-spacing:3px;
+color:var(--wine);
+}
+
+.nav-links{
+display:flex;
+gap:17px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+font-size:10px;
+font-weight:700;
+letter-spacing:1px;
+color:#51474c;
+}
+
+.nav-links a:hover{color:#a34268}
+
+.hero{
+min-height:510px;
+padding:80px 9%;
+display:flex;
+align-items:center;
+color:white;
+background:
+linear-gradient(90deg,rgba(29,15,24,.87),rgba(29,15,24,.12)),
+url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.hero-content{max-width:620px}
+
+.eyebrow{
+font-size:10px;
+letter-spacing:4px;
+margin-bottom:22px;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:clamp(48px,7vw,82px);
+font-weight:400;
+line-height:1.05;
+margin-bottom:22px;
+}
+
+.hero p{
+font-size:14px;
+line-height:1.9;
+color:#f0e4e9;
+max-width:470px;
+}
+
+.ticker{
+background:var(--wine);
+color:white;
+padding:14px;
+overflow:hidden;
+white-space:nowrap;
+font-size:10px;
+letter-spacing:3px;
+}
+
+.section{padding:75px 8%}
+
+.heading{
+text-align:center;
+margin-bottom:42px;
+}
+
+.heading span{
+color:#a34a6d;
+font-size:10px;
+letter-spacing:3px;
+}
+
+.heading h2{
+font-family:'Playfair Display',serif;
+font-weight:400;
+font-size:42px;
+margin:12px 0;
+}
+
+.heading p{
+font-size:13px;
+color:var(--muted);
+line-height:1.8;
+}
+
+.featured{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+background:white;
+}
+
+.featured img{
+width:100%;
+height:480px;
+object-fit:cover;
+}
+
+.featured-content{
+padding:45px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.tag{
+color:#a34a6d;
+font-size:10px;
+letter-spacing:2px;
+font-weight:700;
+}
+
+.featured-content h2{
+font-family:'Playfair Display',serif;
+font-size:39px;
+font-weight:400;
+margin:18px 0;
+line-height:1.2;
+}
+
+.featured-content p{
+font-size:13px;
+color:var(--muted);
+line-height:2;
+margin-bottom:20px;
+}
+
+.read-link{
+color:var(--wine);
+text-decoration:none;
+font-size:10px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:23px;
+}
+
+.news-card{
+background:white;
+overflow:hidden;
+transition:.3s;
+}
+
+.news-card:hover{transform:translateY(-5px)}
+
+.news-card img{
+width:100%;
+height:235px;
+object-fit:cover;
+display:block;
+}
+
+.news-content{padding:22px}
+
+.news-content small{
+font-size:9px;
+color:#a34a6d;
+letter-spacing:2px;
+}
+
+.news-content h3{
+font-family:'Playfair Display',serif;
+font-size:23px;
+font-weight:400;
+line-height:1.3;
+margin:12px 0;
+}
+
+.news-content p{
+font-size:12px;
+color:var(--muted);
+line-height:1.8;
+margin-bottom:15px;
+}
+
+.category-bar{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:35px;
+}
+
+.category-bar button{
+padding:11px 18px;
+border:1px solid #ddcbd2;
+background:transparent;
+color:#51474c;
+font-size:10px;
+letter-spacing:1px;
+cursor:pointer;
+}
+
+.category-bar button.active,
+.category-bar button:hover{
+background:var(--wine);
+color:white;
+border-color:var(--wine);
+}
+
+.newsletter{
+background:#ead9e0;
+text-align:center;
+padding:65px 20px;
+}
+
+.newsletter h2{
+font-family:'Playfair Display',serif;
+font-size:39px;
+font-weight:400;
+margin-bottom:13px;
+}
+
+.newsletter p{
+font-size:13px;
+color:#66565e;
+margin-bottom:24px;
+line-height:1.8;
+}
+
+.newsletter input{
+padding:15px;
+width:min(320px,90%);
+border:1px solid #d3bdc7;
+outline:none;
+background:white;
+font-family:inherit;
+}
+
+.newsletter button{
+padding:16px 23px;
+background:var(--wine);
+color:white;
+font-size:10px;
+letter-spacing:1px;
+margin-left:5px;
+border:0;
+cursor:pointer;
+}
+
+.newsletter button:hover{background:#913b5e}
+
+.inspiration-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.inspiration-card{
+background:white;
+}
+
+.inspiration-card img{
+width:100%;
+height:280px;
+object-fit:cover;
+display:block;
+}
+
+.inspiration-card div{padding:18px}
+
+.inspiration-card h3{
+font-family:'Playfair Display',serif;
+font-weight:400;
+font-size:22px;
+margin-bottom:10px;
+}
+
+.inspiration-card a{
+text-decoration:none;
+font-size:10px;
+letter-spacing:1px;
+color:var(--wine);
+font-weight:700;
+}
+
+footer{
+background:#251a21;
+color:white;
+padding:45px;
+text-align:center;
+}
+
+footer h2{
+font-family:'Playfair Display',serif;
+letter-spacing:3px;
+font-weight:400;
+margin-bottom:12px;
+}
+
+footer p{font-size:11px;color:#cbbcc3}
+
+@media(max-width:850px){
+.featured{grid-template-columns:1fr}
+.featured img{height:350px}
+.news-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:550px){
+nav{justify-content:center}
+.nav-links{justify-content:center}
+.section{padding:55px 5%}
+.news-grid,.inspiration-grid{grid-template-columns:1fr}
+.featured-content{padding:28px}
+.newsletter button{margin:10px 0 0}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">THE LOOK EDIT</div>
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="runway.html">RUNWAY</a>
+<a href="trends.html">TRENDS</a>
+<a href="beauty.html">BEAUTY</a>
+<a href="my-closet.html">MY CLOSET</a>
+<a href="wishlist.html">WISHLIST</a>
+</div>
+</nav>
+
+<header class="hero">
+<div class="hero-content">
+<div class="eyebrow">THE LOOK EDIT — DAILY DISPATCH</div>
+<h1>Fashion Never<br>Stands Still.</h1>
+<p>
+From the latest runway moments to the people shaping
+tomorrow's fashion landscape, stay curious and stay informed.
+Your front-row seat to the fashion world starts here.
+</p>
+</div>
+</header>
+
+<div class="ticker">
+THE RUNWAY • CULTURE • DESIGNERS • STREET STYLE • BEAUTY • FASHION BUSINESS • THE NEXT BIG THING •
+</div>
+
+<section class="section">
+<div class="heading">
+<span>THE LEAD STORY</span>
+<h2>On the Fashion Radar</h2>
+<p>Stories, ideas and conversations worth knowing about.</p>
+</div>
+
+<div class="featured">
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85">
+
+<div class="featured-content">
+<div class="tag">THE BIG PICTURE · FASHION CULTURE</div>
+<h2>Why Fashion Is Always Looking Forward</h2>
+<p>
+Fashion constantly reinvents itself. Designers revisit
+archives, reinterpret familiar silhouettes and respond to
+the culture around them. The result is an industry where
+heritage and experimentation meet.
+</p>
+<a class="read-link" href="https://www.vogue.com/fashion" target="_blank">EXPLORE FASHION STORIES ↗</a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="heading">
+<span>THE LATEST EDIT</span>
+<h2>Inside the Fashion World</h2>
+<p>Explore stories across the different corners of style.</p>
+</div>
+
+<div class="category-bar">
+<button class="active" onclick="filterNews('all',this)">ALL STORIES</button>
+<button onclick="filterNews('runway',this)">RUNWAY</button>
+<button onclick="filterNews('celebrity',this)">CELEBRITY</button>
+<button onclick="filterNews('industry',this)">INDUSTRY</button>
+<button onclick="filterNews('beauty',this)">BEAUTY</button>
+</div>
+
+<div class="news-grid" id="newsGrid">
+
+<article class="news-card" data-category="runway">
+<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>RUNWAY REPORT</small>
+<h3>The Art of the Fashion Show</h3>
+<p>How designers turn collections into unforgettable visual experiences.</p>
+<a class="read-link" href="https://www.vogue.com/fashion-shows" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+<article class="news-card" data-category="celebrity">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>CELEBRITY STYLE</small>
+<h3>When the Red Carpet Becomes a Runway</h3>
+<p>Celebrity dressing as a form of fashion storytelling and self-expression.</p>
+<a class="read-link" href="https://www.vogue.com/celebrity" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+<article class="news-card" data-category="industry">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>FASHION BUSINESS</small>
+<h3>The Changing Face of Fashion Retail</h3>
+<p>How shopping habits, technology and consumer expectations influence fashion.</p>
+<a class="read-link" href="https://www.businessoffashion.com/" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+<article class="news-card" data-category="beauty">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>BEAUTY DESK</small>
+<h3>Beauty and Fashion: A Creative Partnership</h3>
+<p>Exploring the makeup and beauty details that complete an editorial look.</p>
+<a class="read-link" href="https://www.allure.com/beauty" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+<article class="news-card" data-category="runway">
+<img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>STREET STYLE</small>
+<h3>Street Style Is Its Own Fashion Language</h3>
+<p>Personal style outside the runway and the creativity of everyday dressing.</p>
+<a class="read-link" href="https://www.vogue.com/street-style" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+<article class="news-card" data-category="industry">
+<img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=700&q=85">
+<div class="news-content">
+<small>SUSTAINABILITY</small>
+<h3>Rethinking the Future of Fashion</h3>
+<p>Why responsible design, thoughtful consumption and longevity matter.</p>
+<a class="read-link" href="https://www.voguebusiness.com/sustainability" target="_blank">READ MORE ↗</a>
+</div>
+</article>
+
+</div>
+</section>
+
+<section class="section" style="background:#f0e3e8">
+<div class="heading">
+<span>THE VISUAL EDIT</span>
+<h2>What's Inspiring Us</h2>
+<p>A moodboard of runway energy, editorial styling and fashion culture.</p>
+</div>
+
+<div class="inspiration-grid">
+
+<div class="inspiration-card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85">
+<div>
+<h3>Modern Street Style</h3>
+<a href="https://www.pinterest.com/search/pins/?q=modern%20street%20style%20fashion" target="_blank">EXPLORE PINTEREST ↗</a>
+</div>
+</div>
+
+<div class="inspiration-card">
+<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85">
+<div>
+<h3>Editorial Beauty</h3>
+<a href="https://www.pinterest.com/search/pins/?q=editorial%20beauty%20fashion" target="_blank">EXPLORE PINTEREST ↗</a>
+</div>
+</div>
+
+<div class="inspiration-card">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85">
+<div>
+<h3>Luxury Fashion</h3>
+<a href="https://www.pinterest.com/search/pins/?q=luxury%20fashion%20editorial" target="_blank">EXPLORE PINTEREST ↗</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="newsletter">
+<h2>Letters from the Fashion Desk</h2>
+<p>
+A little inspiration, a few interesting stories and the latest
+fashion conversations — delivered to your inbox.
+</p>
+
+<form onsubmit="subscribe(event)">
+<input type="email" id="email" placeholder="Your email address" required>
+<button type="submit">JOIN THE EDIT</button>
+</form>
+
+<p id="success" style="margin-top:15px"></p>
+</section>
+
+<footer>
+<h2>THE LOOK EDIT</h2>
+<p>Discover your style. Define your look. Make it yours.</p>
+</footer>
+
+<script>
+function filterNews(category,button){
+    document.querySelectorAll(".category-bar button").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".news-card").forEach(card=>{
+        card.style.display =
+            category==="all" || card.dataset.category===category
+            ? "block" : "none";
+    });
+}
+
+function subscribe(event){
+    event.preventDefault();
+
+    const email=document.getElementById("email").value;
+    let subscribers=JSON.parse(localStorage.getItem("lookEditSubscribers"))||[];
+
+    if(subscribers.includes(email)){
+        document.getElementById("success").textContent="You're already on the list!";
+        return;
+    }
+
+    subscribers.push(email);
+    localStorage.setItem("lookEditSubscribers",JSON.stringify(subscribers));
+
+    document.getElementById("success").textContent=
+    "You're on the list! Welcome to The Fashion Desk. ♡";
+
+    document.getElementById("email").value="";
+}
+</script>
+
+</body>
+</html>

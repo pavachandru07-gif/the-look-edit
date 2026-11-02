@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen to Street | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --ink: #211b20;
+    --wine: #622b43;
+    --rose: #d7a1a9;
+    --cream: #f8f3ed;
+    --muted: #81747a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+header {
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e7dcd9;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: var(--wine);
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: var(--wine);
+}
+
+.hero {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    background:
+    linear-gradient(90deg, rgba(25,15,22,.85), rgba(25,15,22,.15)),
+    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85')
+    center/cover;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 85px);
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 430px;
+    color: #eee3e6;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 27px;
+    background: #f5e5e5;
+    color: var(--wine);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+section {
+    padding: 85px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--wine);
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+}
+
+.card-content {
+    padding: 23px;
+}
+
+.card-content small {
+    color: var(--wine);
+    letter-spacing: 2px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 12px 0;
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.dark-section {
+    background: #30212b;
+    color: white;
+}
+
+.dark-section .section-heading span {
+    color: #e4aeb9;
+}
+
+.dark-section .section-heading p {
+    color: #c9b9c1;
+}
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.mood {
+    min-height: 220px;
+    display: flex;
+    align-items: end;
+    padding: 22px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    isolation: isolate;
+}
+
+.mood::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.75));
+    z-index: -1;
+}
+
+.mood h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.breakdown img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+}
+
+.breakdown h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.breakdown p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.style-list {
+    margin-top: 25px;
+}
+
+.style-list div {
+    padding: 15px 0;
+    border-bottom: 1px solid #dfd2d0;
+    font-size: 13px;
+}
+
+.style-list strong {
+    color: var(--wine);
+}
+
+footer {
+    padding: 45px 8%;
+    background: #211b20;
+    color: white;
+    text-align: center;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    font-weight: 400;
+}
+
+footer p {
+    color: #c7b7bd;
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+@media(max-width: 850px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .breakdown {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mood-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section {
+        padding: 60px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE LOOK EDIT</div>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="quiz.html">DISCOVER YOUR STYLE</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">Fashion beyond the frame</div>
+
+        <h1>Screen to<br>Street.</h1>
+
+        <p>
+            From unforgettable cinematic wardrobes to everyday
+            inspiration. Explore the characters, stories and
+            aesthetics that make fashion iconic.
+        </p>
+
+        <a href="#cinema" class="button">Explore the edit</a>
+    </div>
+</div>
+
+<section id="cinema">
+
+    <div class="section-heading">
+        <span>The Cinema Edit</span>
+        <h2>Fashion has a leading role.</h2>
+        <p>When storytelling meets personal style.</p>
+    </div>
+
+    <div class="feature-grid">
+
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85" alt="Elegant fashion look">
+            <div class="card-content">
+                <small>The timeless wardrobe</small>
+                <h3>The Art of Elegance</h3>
+                <p>Tailored silhouettes, beautiful coats and understated accessories. A wardrobe that never loses its charm.</p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Street fashion look">
+            <div class="card-content">
+                <small>The city girl aesthetic</small>
+                <h3>Main Character Energy</h3>
+                <p>Statement pieces, confident styling and effortless combinations for the modern city wardrobe.</p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Fashion editorial">
+            <div class="card-content">
+                <small>The romantic edit</small>
+                <h3>Love in Every Detail</h3>
+                <p>Soft fabrics, delicate details and romantic silhouettes inspired by cinematic fashion.</p>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section class="dark-section">
+
+    <div class="section-heading">
+        <span>Find your aesthetic</span>
+        <h2>The Moodboard.</h2>
+        <p>Choose a mood. Build a wardrobe around it.</p>
+    </div>
+
+    <div class="mood-grid">
+
+        <div class="mood" style="background-image:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85')">
+            <h3>Old Money</h3>
+        </div>
+
+        <div class="mood" style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85')">
+            <h3>Coquette</h3>
+        </div>
+
+        <div class="mood" style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85')">
+            <h3>Street Chic</h3>
+        </div>
+
+        <div class="mood" style="background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85')">
+            <h3>Dark Academia</h3>
+        </div>
+
+    </div>
+</section>
+
+<section>
+
+    <div class="breakdown">
+
+        <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1000&q=85" alt="Fashion styling inspiration">
+
+        <div>
+            <span class="eyebrow" style="color:#622b43;">The style breakdown</span>
+
+            <h2>Make the look your own.</h2>
+
+            <p>
+                Inspiration is only the beginning. The real magic
+                happens when you take a look you love and make
+                it part of your own wardrobe.
+            </p>
+
+            <div class="style-list">
+                <div><strong>01.</strong> Start with a statement piece</div>
+                <div><strong>02.</strong> Choose complementary colours</div>
+                <div><strong>03.</strong> Add accessories with intention</div>
+                <div><strong>04.</strong> Make it feel like you</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>Fashion is what you make of it. Make it yours.</p>
+    <p>© 2026 THE LOOK EDIT. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

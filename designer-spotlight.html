@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designer Spotlight | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--wine:#651e3b;
+--cream:#faf6f1;
+--pink:#ead4dc;
+--ink:#292329;
+--muted:#81747a;
+}
+
+body{
+font-family:'DM Sans',sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+nav{
+padding:22px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+background:white;
+border-bottom:1px solid #eadfe3;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:25px;
+letter-spacing:3px;
+color:var(--wine);
+}
+
+.nav-links{
+display:flex;
+gap:19px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+font-size:10px;
+font-weight:700;
+letter-spacing:1px;
+color:#51474c;
+}
+
+.nav-links a:hover{color:#a34268}
+
+.hero{
+min-height:570px;
+display:flex;
+align-items:center;
+padding:80px 9%;
+color:white;
+background:
+linear-gradient(90deg,rgba(29,16,24,.85),rgba(29,16,24,.15)),
+url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.hero-content{max-width:600px}
+
+.eyebrow{
+letter-spacing:4px;
+font-size:10px;
+margin-bottom:23px;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:clamp(48px,7vw,86px);
+font-weight:400;
+line-height:1.06;
+margin-bottom:23px;
+}
+
+.hero p{
+font-size:14px;
+line-height:1.9;
+max-width:450px;
+color:#f2e8ed;
+}
+
+.section{padding:80px 8%}
+
+.heading{
+text-align:center;
+margin-bottom:45px;
+}
+
+.heading span{
+font-size:10px;
+letter-spacing:3px;
+color:#a34a6d;
+}
+
+.heading h2{
+font-family:'Playfair Display',serif;
+font-weight:400;
+font-size:43px;
+margin:12px 0;
+}
+
+.heading p{
+font-size:13px;
+color:var(--muted);
+line-height:1.8;
+}
+
+.featured{
+display:grid;
+grid-template-columns:1.1fr 1fr;
+background:white;
+}
+
+.featured img{
+width:100%;
+height:520px;
+object-fit:cover;
+}
+
+.featured-content{
+padding:55px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.featured-content small{
+color:#a34a6d;
+letter-spacing:3px;
+font-size:10px;
+}
+
+.featured-content h2{
+font-family:'Playfair Display',serif;
+font-size:45px;
+font-weight:400;
+margin:20px 0;
+}
+
+.featured-content p{
+font-size:13px;
+color:var(--muted);
+line-height:2;
+margin-bottom:25px;
+}
+
+.text-link{
+color:var(--wine);
+font-size:11px;
+letter-spacing:1px;
+font-weight:700;
+text-decoration:none;
+}
+
+.filters{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:35px;
+}
+
+.filters button{
+padding:11px 19px;
+border:1px solid #d9c6ce;
+background:transparent;
+color:#51474c;
+font-size:10px;
+letter-spacing:1px;
+cursor:pointer;
+}
+
+.filters button.active,
+.filters button:hover{
+background:var(--wine);
+color:white;
+border-color:var(--wine);
+}
+
+.designer-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.designer-card{
+background:white;
+overflow:hidden;
+transition:.3s;
+}
+
+.designer-card:hover{transform:translateY(-5px)}
+
+.designer-card img{
+width:100%;
+height:330px;
+object-fit:cover;
+display:block;
+}
+
+.card-content{padding:23px}
+
+.card-content small{
+font-size:9px;
+letter-spacing:2px;
+color:#a34a6d;
+}
+
+.card-content h3{
+font-family:'Playfair Display',serif;
+font-size:25px;
+font-weight:400;
+margin:10px 0;
+}
+
+.card-content p{
+font-size:12px;
+color:var(--muted);
+line-height:1.8;
+min-height:65px;
+margin-bottom:16px;
+}
+
+.signature{
+background:#eee2e7;
+}
+
+.signature-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.signature-card{
+background:white;
+padding:27px 20px;
+text-align:center;
+}
+
+.signature-card span{
+font-size:27px;
+}
+
+.signature-card h3{
+font-family:'Playfair Display',serif;
+font-size:21px;
+font-weight:400;
+margin:13px 0 8px;
+}
+
+.signature-card p{
+font-size:11px;
+color:var(--muted);
+line-height:1.8;
+}
+
+.gallery-grid{
+columns:3;
+column-gap:17px;
+}
+
+.gallery-grid img{
+width:100%;
+margin-bottom:17px;
+display:block;
+}
+
+.quote{
+background:#2c1c26;
+color:white;
+text-align:center;
+padding:85px 10%;
+}
+
+.quote h2{
+font-family:'Playfair Display',serif;
+font-size:clamp(30px,5vw,50px);
+font-weight:400;
+line-height:1.4;
+max-width:850px;
+margin:auto;
+}
+
+.quote p{
+color:#d9b9c8;
+letter-spacing:3px;
+font-size:10px;
+margin-top:25px;
+}
+
+.spotlight-note{
+background:#f0e3e8;
+padding:38px;
+text-align:center;
+margin-top:45px;
+}
+
+.spotlight-note h3{
+font-family:'Playfair Display',serif;
+font-size:29px;
+font-weight:400;
+margin-bottom:12px;
+}
+
+.spotlight-note p{
+font-size:13px;
+color:#66565e;
+line-height:1.9;
+}
+
+footer{
+background:#251a21;
+color:white;
+padding:45px;
+text-align:center;
+}
+
+footer h2{
+font-family:'Playfair Display',serif;
+letter-spacing:3px;
+font-weight:400;
+margin-bottom:12px;
+}
+
+footer p{font-size:11px;color:#cbbcc3}
+
+@media(max-width:850px){
+.featured{grid-template-columns:1fr}
+.featured img{height:380px}
+.designer-grid{grid-template-columns:repeat(2,1fr)}
+.signature-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:550px){
+nav{justify-content:center}
+.nav-links{justify-content:center}
+.section{padding:55px 5%}
+.designer-grid{grid-template-columns:1fr}
+.signature-grid{grid-template-columns:1fr 1fr}
+.gallery-grid{columns:2}
+.featured-content{padding:30px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">THE LOOK EDIT</div>
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="runway.html">RUNWAY</a>
+<a href="trends.html">TRENDS</a>
+<a href="beauty.html">BEAUTY</a>
+<a href="my-closet.html">MY CLOSET</a>
+<a href="wishlist.html">WISHLIST</a>
+</div>
+</nav>
+
+<header class="hero">
+<div class="hero-content">
+<div class="eyebrow">THE PEOPLE BEHIND THE FASHION</div>
+<h1>Names That<br>Define Fashion.</h1>
+<p>
+Behind every unforgettable collection is a creative mind.
+Discover the designers, fashion houses and ideas that have
+shaped the way the world dresses.
+</p>
+</div>
+</header>
+
+<section class="section">
+<div class="heading">
+<span>THE COVER STORY</span>
+<h2>The Art of Fashion</h2>
+<p>Fashion is more than clothing. It is a language of creativity and identity.</p>
+</div>
+
+<div class="featured">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85">
+
+<div class="featured-content">
+<small>FASHION HOUSE SPOTLIGHT</small>
+<h2>Chanel</h2>
+<p>
+A house synonymous with timeless elegance, refined tailoring
+and understated luxury. Chanel transformed modern dressing
+through its approach to simplicity, comfort and sophistication.
+</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Chanel%20fashion%20editorial" target="_blank">
+EXPLORE THE CHANEL AESTHETIC ↗
+</a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="heading">
+<span>THE DESIGNER DIRECTORY</span>
+<h2>Meet the Visionaries</h2>
+<p>Explore some of the most influential names in contemporary and historic fashion.</p>
+</div>
+
+<div class="filters">
+<button class="active" onclick="filterDesigners('all',this)">ALL DESIGNERS</button>
+<button onclick="filterDesigners('luxury',this)">LUXURY</button>
+<button onclick="filterDesigners('avant-garde',this)">AVANT-GARDE</button>
+<button onclick="filterDesigners('minimal',this)">MINIMAL</button>
+</div>
+
+<div class="designer-grid" id="designerGrid">
+
+<div class="designer-card" data-category="luxury">
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>ITALIAN LUXURY</small>
+<h3>Donatella Versace</h3>
+<p>Known for bold glamour, vivid prints and confident silhouettes.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Versace%20fashion%20aesthetic" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+<div class="designer-card" data-category="minimal">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>MODERN MINIMALISM</small>
+<h3>Calvin Klein</h3>
+<p>Clean lines, relaxed proportions and a distinctly modern approach to essentials.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Calvin%20Klein%20minimal%20fashion" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+<div class="designer-card" data-category="avant-garde">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>AVANT-GARDE</small>
+<h3>Alexander McQueen</h3>
+<p>Dramatic storytelling, sculptural shapes and unforgettable runway concepts.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Alexander%20McQueen%20runway" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+<div class="designer-card" data-category="luxury">
+<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>FRENCH LUXURY</small>
+<h3>Christian Dior</h3>
+<p>Romantic silhouettes, refined tailoring and a celebrated couture legacy.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Christian%20Dior%20couture" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+<div class="designer-card" data-category="minimal">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>QUIET LUXURY</small>
+<h3>Jil Sander</h3>
+<p>Architectural simplicity, precise cuts and a thoughtful use of materials.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Jil%20Sander%20fashion" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+<div class="designer-card" data-category="avant-garde">
+<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85">
+<div class="card-content">
+<small>CONCEPTUAL FASHION</small>
+<h3>Rei Kawakubo</h3>
+<p>A boundary-breaking creative vision that challenges conventional ideas of clothing.</p>
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=Comme%20des%20Garcons%20runway" target="_blank">VIEW INSPIRATION ↗</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section signature">
+<div class="heading">
+<span>THE DESIGN LANGUAGE</span>
+<h2>Signature Aesthetics</h2>
+<p>Every fashion house has a visual language. Which one speaks to you?</p>
+</div>
+
+<div class="signature-grid">
+<div class="signature-card">
+<span>✧</span>
+<h3>Quiet Luxury</h3>
+<p>Neutral palettes, exceptional fabrics and subtle details.</p>
+</div>
+
+<div class="signature-card">
+<span>✦</span>
+<h3>Maximalism</h3>
+<p>Expressive colours, bold prints and statement accessories.</p>
+</div>
+
+<div class="signature-card">
+<span>◇</span>
+<h3>Minimalism</h3>
+<p>Clean silhouettes, simplicity and thoughtful proportions.</p>
+</div>
+
+<div class="signature-card">
+<span>❋</span>
+<h3>Avant-Garde</h3>
+<p>Experimental forms, unexpected construction and artistic ideas.</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="heading">
+<span>VISUAL RESEARCH</span>
+<h2>The Editorial Gallery</h2>
+<p>A collection of fashion photography and runway-inspired references.</p>
+</div>
+
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=700&q=85">
+<img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=700&q=85">
+<img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=85">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=85">
+<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=85">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85">
+</div>
+
+<div style="text-align:center;margin-top:30px">
+<a class="text-link" href="https://www.pinterest.com/search/pins/?q=high%20fashion%20runway%20editorial" target="_blank">
+DISCOVER MORE ON PINTEREST ↗
+</a>
+</div>
+</section>
+
+<section class="quote">
+<h2>“Fashion is the armour to survive the reality of everyday life.”</h2>
+<p>— BILL CUNNINGHAM</p>
+</section>
+
+<section class="section">
+<div class="spotlight-note">
+<h3>Look Beyond the Label</h3>
+<p>
+The most interesting part of fashion is discovering the ideas
+behind the clothes. Explore different creative worlds, find
+the aesthetics you connect with and develop a style that feels
+authentically yours.
+</p>
+</div>
+</section>
+
+<footer>
+<h2>THE LOOK EDIT</h2>
+<p>Discover your style. Define your look. Make it yours.</p>
+</footer>
+
+<script>
+function filterDesigners(category,button){
+    document.querySelectorAll(".filters button").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".designer-card").forEach(card=>{
+        if(category==="all" || card.dataset.category===category){
+            card.style.display="block";
+        }else{
+            card.style.display="none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

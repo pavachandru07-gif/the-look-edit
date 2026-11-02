@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Report | THE LOOK EDIT</title>
+    <link rel="stylesheet" href="style.css">
+
+```
+<style>
+    .trend-hero {
+        min-height: 580px;
+        background:
+            linear-gradient(90deg, rgba(20, 8, 17, .78), rgba(20, 8, 17, .12)),
+            url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2000&q=90");
+        background-size: cover;
+        background-position: center 35%;
+        display: flex;
+        align-items: center;
+        padding: 8%;
+        color: white;
+    }
+
+    .trend-hero-content {
+        max-width: 650px;
+    }
+
+    .trend-hero .eyebrow {
+        letter-spacing: 4px;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    .trend-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(48px, 7vw, 88px);
+        line-height: 1.05;
+        margin: 20px 0;
+    }
+
+    .trend-hero p {
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 450px;
+    }
+
+    .trend-section {
+        padding: 85px 8%;
+    }
+
+    .trend-heading {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .trend-heading span {
+        color: #9a536d;
+        letter-spacing: 3px;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    .trend-heading h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(32px, 4vw, 48px);
+        margin-top: 12px;
+    }
+
+    .trend-heading p {
+        max-width: 550px;
+        margin: 15px auto 0;
+        line-height: 1.8;
+        opacity: .75;
+    }
+
+    .trend-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .trend-card {
+        background: #fffaf7;
+        overflow: hidden;
+    }
+
+    .trend-card img {
+        width: 100%;
+        height: 370px;
+        object-fit: cover;
+        display: block;
+        transition: transform .5s ease;
+    }
+
+    .trend-card:hover img {
+        transform: scale(1.04);
+    }
+
+    .trend-card-content {
+        padding: 25px;
+    }
+
+    .trend-card-content span {
+        color: #98566b;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .trend-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 25px;
+        margin: 12px 0;
+    }
+
+    .trend-card p {
+        font-size: 13px;
+        line-height: 1.8;
+        opacity: .75;
+    }
+
+    .colour-section {
+        background: #f3e9e8;
+        padding: 85px 8%;
+    }
+
+    .colour-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+        margin-top: 40px;
+    }
+
+    .colour-item {
+        text-align: center;
+    }
+
+    .colour-swatch {
+        height: 150px;
+        border-radius: 100px 100px 5px 5px;
+        margin-bottom: 15px;
+    }
+
+    .colour-item h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 17px;
+    }
+
+    .colour-item p {
+        font-size: 11px;
+        margin-top: 5px;
+        opacity: .7;
+    }
+
+    .trend-feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 500px;
+        background: #29202b;
+        color: white;
+    }
+
+    .trend-feature img {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        object-fit: cover;
+    }
+
+    .trend-feature-content {
+        padding: 70px 12%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .trend-feature-content span {
+        color: #e2a9bd;
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .trend-feature-content h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(35px, 4vw, 54px);
+        margin: 20px 0;
+    }
+
+    .trend-feature-content p {
+        line-height: 1.9;
+        font-size: 14px;
+        opacity: .8;
+    }
+
+    .trend-note {
+        text-align: center;
+        padding: 30px 8%;
+        font-size: 11px;
+        opacity: .65;
+    }
+
+    @media(max-width: 850px) {
+        .trend-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .colour-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .trend-feature {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media(max-width: 550px) {
+        .trend-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .trend-card img {
+            height: 320px;
+        }
+
+        .colour-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .trend-hero {
+            min-height: 480px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="announcement">
+    THE ART OF FASHION · THE LANGUAGE OF STYLE
+</div>
+
+<header class="navbar">
+    <a href="index.html" class="logo">THE LOOK EDIT<span>.</span></a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="runway.html">The Runway Edit</a>
+        <a href="trends.html">Trend Report</a>
+        <a href="index.html#couture">Haute Couture</a>
+        <a href="index.html#fashion">Fashion</a>
+        <a href="index.html#beauty">Beauty</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="trend-hero">
+        <div class="trend-hero-content">
+            <span class="eyebrow">THE LOOK EDIT PRESENTS · STYLE REPORT</span>
+            <h1>The New Language of Style.</h1>
+            <p>
+                A closer look at the colours, silhouettes, details and
+                fashion moods shaping the way we dress.
+            </p>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+
+    <section class="trend-section">
+        <div class="trend-heading">
+            <span>THE EDITOR'S NOTE</span>
+            <h2>More Than Just a Trend.</h2>
+            <p>
+                Fashion is constantly evolving. Explore ideas worth
+                experimenting with, discover new combinations and
+                find inspiration to make every look your own.
+            </p>
+        </div>
+
+        <div class="trend-grid">
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Modern everyday fashion">
+                <div class="trend-card-content">
+                    <span>01 · Everyday Style</span>
+                    <h3>The Elevated Everyday</h3>
+                    <p>
+                        Simple pieces, thoughtful layering and
+                        beautifully put-together outfits.
+                    </p>
+                </div>
+            </article>
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85" alt="Fashion silhouette">
+                <div class="trend-card-content">
+                    <span>02 · Silhouettes</span>
+                    <h3>Shape & Structure</h3>
+                    <p>
+                        Experiment with oversized tailoring,
+                        fluid fabrics and interesting proportions.
+                    </p>
+                </div>
+            </article>
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85" alt="Fashion styling inspiration">
+                <div class="trend-card-content">
+                    <span>03 · Styling Notes</span>
+                    <h3>The Art of Layering</h3>
+                    <p>
+                        Build dimension with textures, accessories
+                        and unexpected combinations.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- COLOUR REPORT -->
+
+    <section class="colour-section">
+        <div class="trend-heading">
+            <span>THE COLOUR REPORT</span>
+            <h2>A Palette of Possibilities.</h2>
+            <p>
+                Six colour directions to inspire your next outfit
+                and give your wardrobe a fresh perspective.
+            </p>
+        </div>
+
+        <div class="colour-grid">
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#681d35;"></div>
+                <h4>Deep Burgundy</h4>
+                <p>Bold & timeless</p>
+            </div>
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#d9a1ad;"></div>
+                <h4>Soft Rose</h4>
+                <p>Romantic & delicate</p>
+            </div>
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#243e36;"></div>
+                <h4>Forest Green</h4>
+                <p>Rich & grounded</p>
+            </div>
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#252d4c;"></div>
+                <h4>Midnight Navy</h4>
+                <p>Classic & refined</p>
+            </div>
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#d8c5a5;"></div>
+                <h4>Warm Champagne</h4>
+                <p>Soft & sophisticated</p>
+            </div>
+
+            <div class="colour-item">
+                <div class="colour-swatch" style="background:#57415e;"></div>
+                <h4>Muted Plum</h4>
+                <p>Mysterious & elegant</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STREET STYLE FEATURE -->
+
+    <section class="trend-feature">
+
+        <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90"
+            alt="Street style fashion inspiration">
+
+        <div class="trend-feature-content">
+            <span>THE STREET STYLE EDIT</span>
+
+            <h2>Style Has No Rulebook.</h2>
+
+            <p>
+                The most interesting outfits often come from
+                personal expression. Mix unexpected textures,
+                play with proportions, experiment with accessories
+                and create a look that feels entirely yours.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- ACCESSORIES -->
+
+    <section class="trend-section">
+
+        <div class="trend-heading">
+            <span>THE FINISHING TOUCH</span>
+            <h2>Details Make the Difference.</h2>
+            <p>
+                Sometimes, the smallest details create the
+                strongest impression.
+            </p>
+        </div>
+
+        <div class="trend-grid">
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=85" alt="Jewellery inspiration">
+                <div class="trend-card-content">
+                    <span>ACCESSORIES · 01</span>
+                    <h3>Statement Jewellery</h3>
+                    <p>
+                        Sculptural earrings, layered necklaces
+                        and pieces that bring an outfit to life.
+                    </p>
+                </div>
+            </article>
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85" alt="Luxury handbag inspiration">
+                <div class="trend-card-content">
+                    <span>ACCESSORIES · 02</span>
+                    <h3>The Perfect Bag</h3>
+                    <p>
+                        From structured silhouettes to relaxed
+                        everyday designs, find your finishing piece.
+                    </p>
+                </div>
+            </article>
+
+            <article class="trend-card">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85" alt="Sunglasses styling">
+                <div class="trend-card-content">
+                    <span>ACCESSORIES · 03</span>
+                    <h3>Frames of Mind</h3>
+                    <p>
+                        Explore eyewear shapes that add character
+                        and personality to your look.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+    <div class="trend-note">
+        THE LOOK EDIT · AN EDITORIAL SPACE FOR FASHION INSPIRATION.
+        TREND STORIES ARE CREATIVE STYLE IDEAS, NOT LIVE TREND DATA.
+    </div>
+
+</main>
+
+<footer class="footer">
+    <a href="index.html" class="footer-logo">THE LOOK EDIT.</a>
+    <p>Style is personal. Make it yours.</p>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="runway.html">Runway</a>
+        <a href="trends.html">Trends</a>
+    </div>
+    <p class="copyright">© 2026 THE LOOK EDIT. ALL RIGHTS RESERVED.</p>
+</footer>
+```
+
+</body>
+</html>

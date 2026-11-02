@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Style Studio | THE LOOK EDIT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --wine: #681f3d;
+    --pink: #f2dce4;
+    --cream: #faf6f1;
+    --ink: #292329;
+    --muted: #81747a;
+    --line: #eadfe3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    background: white;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: var(--wine);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #51474c;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #a34268;
+}
+
+.hero {
+    min-height: 440px;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    background:
+    linear-gradient(90deg, rgba(32,15,25,.82), rgba(32,15,25,.12)),
+    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85') center/cover;
+    color: white;
+}
+
+.hero-content {
+    max-width: 580px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 7vw, 78px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    max-width: 450px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #f4e8ed;
+}
+
+.section {
+    padding: 75px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-heading span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #a14d70;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.studio-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.panel {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 28px;
+}
+
+.panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.panel-description {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.category-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--wine);
+    font-weight: 700;
+    margin: 25px 0 13px;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 11px;
+}
+
+.style-item {
+    border: 1px solid var(--line);
+    background: #fff;
+    cursor: pointer;
+    transition: .2s;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.style-item:hover,
+.style-item.selected {
+    border: 2px solid var(--wine);
+    transform: translateY(-3px);
+}
+
+.style-item img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    display: block;
+}
+
+.style-item span {
+    display: block;
+    padding-top: 9px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.preview-panel {
+    background: #f1e7eb;
+    padding: 30px;
+    text-align: center;
+    position: sticky;
+    top: 20px;
+}
+
+.preview-panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    font-weight: 400;
+}
+
+.preview-panel > p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 9px 0 25px;
+}
+
+.outfit-preview {
+    min-height: 330px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    gap: 10px;
+}
+
+.preview-piece {
+    width: 100%;
+    max-width: 280px;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    background: #9c637c;
+    padding: 15px;
+}
+
+.preview-piece:nth-child(2) {
+    background: #b8a08d;
+}
+
+.preview-piece:nth-child(3) {
+    background: #34303a;
+}
+
+.preview-piece:nth-child(4) {
+    background: #a14d70;
+}
+
+.preview-piece.empty {
+    background: #f5f0f1;
+    color: #a99ca2;
+    border: 1px dashed #d7c6cd;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+}
+
+.palette {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #ddd;
+    cursor: pointer;
+}
+
+.swatch:hover {
+    transform: scale(1.15);
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.primary-btn {
+    background: var(--wine);
+    color: white;
+    padding: 14px 25px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    background: #913b5e;
+}
+
+.secondary-btn {
+    background: white;
+    border: 1px solid var(--wine);
+    color: var(--wine);
+    padding: 13px 20px;
+    font-size: 11px;
+    margin-left: 7px;
+}
+
+.saved-section {
+    background: white;
+}
+
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.saved-card {
+    border: 1px solid var(--line);
+    padding: 20px;
+}
+
+.saved-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.saved-colours {
+    display: flex;
+    gap: 7px;
+    margin: 15px 0;
+}
+
+.saved-colours span {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.delete-btn {
+    color: #a04465;
+    background: none;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.inspiration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.inspiration-card {
+    position: relative;
+    overflow: hidden;
+    background: white;
+}
+
+.inspiration-card img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    display: block;
+    transition: .5s;
+}
+
+.inspiration-card:hover img {
+    transform: scale(1.05);
+}
+
+.inspiration-card div {
+    padding: 17px;
+}
+
+.inspiration-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.inspiration-card a {
+    color: #a04465;
+    font-size: 11px;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.tip-box {
+    margin-top: 45px;
+    background: #eee1e6;
+    padding: 35px;
+    text-align: center;
+}
+
+.tip-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.tip-box p {
+    font-size: 13px;
+    color: #66565e;
+    line-height: 1.8;
+}
+
+footer {
+    background: #291b24;
+    color: white;
+    padding: 45px 8%;
+    text-align: center;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 3px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 11px;
+    color: #cbbcc3;
+}
+
+@media(max-width: 850px) {
+    .studio-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        position: static;
+    }
+
+    .inspiration-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+    nav {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .section {
+        padding: 55px 5%;
+    }
+
+    .item-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .inspiration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .secondary-btn {
+        margin: 10px 0 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">THE LOOK EDIT</div>
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="runway.html">RUNWAY</a>
+        <a href="trends.html">TRENDS</a>
+        <a href="beauty.html">BEAUTY</a>
+        <a href="my-closet.html">MY CLOSET</a>
+        <a href="wishlist.html">WISHLIST</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">THE LOOK EDIT PRESENTS</div>
+        <h1>Your Style.<br>Your Rules.</h1>
+        <p>
+            Welcome to your personal styling playground.
+            Mix pieces, explore colour combinations and create
+            outfits that feel completely yours.
+        </p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="section-heading">
+        <span>01 — Create Your Look</span>
+        <h2>The Style Studio</h2>
+        <p>Choose your favourite pieces and build a look from scratch.</p>
+    </div>
+
+    <div class="studio-layout">
+
+        <div class="panel">
+            <h3>Build an outfit</h3>
+            <p class="panel-description">
+                Select one piece from each category. Your choices
+                will appear in your outfit preview.
+            </p>
+
+            <div class="category-title">01 — TOPS</div>
+            <div class="item-grid">
+                <div class="style-item" onclick="selectItem('top','Silk Blouse',this)">
+                    <img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=400&q=80">
+                    <span>Silk Blouse</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('top','Classic Shirt',this)">
+                    <img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=400&q=80">
+                    <span>Classic Shirt</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('top','Statement Top',this)">
+                    <img src="https://images.unsplash.com/photo-1564257577-9b3c2d6e7c7a?auto=format&fit=crop&w=400&q=80">
+                    <span>Statement Top</span>
+                </div>
+            </div>
+
+            <div class="category-title">02 — BOTTOMS</div>
+            <div class="item-grid">
+                <div class="style-item" onclick="selectItem('bottom','Tailored Trousers',this)">
+                    <img src="https://images.unsplash.com/photo-1506629905607-d9d7c8b2b5c1?auto=format&fit=crop&w=400&q=80">
+                    <span>Tailored Trousers</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('bottom','Denim Jeans',this)">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80">
+                    <span>Denim Jeans</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('bottom','Midi Skirt',this)">
+                    <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=400&q=80">
+                    <span>Midi Skirt</span>
+                </div>
+            </div>
+
+            <div class="category-title">03 — SHOES</div>
+            <div class="item-grid">
+                <div class="style-item" onclick="selectItem('shoes','Heels',this)">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=400&q=80">
+                    <span>Heels</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('shoes','Sneakers',this)">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80">
+                    <span>Sneakers</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('shoes','Classic Flats',this)">
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=400&q=80">
+                    <span>Classic Flats</span>
+                </div>
+            </div>
+
+            <div class="category-title">04 — ACCESSORIES</div>
+            <div class="item-grid">
+                <div class="style-item" onclick="selectItem('accessory','Gold Jewellery',this)">
+                    <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=400&q=80">
+                    <span>Gold Jewellery</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('accessory','Statement Bag',this)">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=400&q=80">
+                    <span>Statement Bag</span>
+                </div>
+
+                <div class="style-item" onclick="selectItem('accessory','Sunglasses',this)">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=80">
+                    <span>Sunglasses</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <h3>Your Outfit Preview</h3>
+            <p>Your personal combination, brought together.</p>
+
+            <div class="outfit-preview">
+                <div class="preview-piece empty" id="topPreview">Choose a top</div>
+                <div class="preview-piece empty" id="bottomPreview">Choose a bottom</div>
+                <div class="preview-piece empty" id="shoesPreview">Choose shoes</div>
+                <div class="preview-piece empty" id="accessoryPreview">Choose an accessory</div>
+            </div>
+
+            <p style="margin-top:25px;">Choose your outfit's colour mood</p>
+
+            <div class="palette">
+                <button class="swatch" style="background:#681f3d" onclick="setPalette('#681f3d')"></button>
+                <button class="swatch" style="background:#d8a6b8" onclick="setPalette('#d8a6b8')"></button>
+                <button class="swatch" style="background:#253b59" onclick="setPalette('#253b59')"></button>
+                <button class="swatch" style="background:#315b48" onclick="setPalette('#315b48')"></button>
+                <button class="swatch" style="background:#292329" onclick="setPalette('#292329')"></button>
+                <button class="swatch" style="background:#c4a477" onclick="setPalette('#c4a477')"></button>
+            </div>
+
+            <div>
+                <button class="primary-btn" onclick="saveLook()">Save This Look</button>
+                <button class="secondary-btn" onclick="resetLook()">Reset</button>
+            </div>
+
+            <p id="message" style="margin-top:17px;color:#681f3d;font-size:12px;"></p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section saved-section">
+    <div class="section-heading">
+        <span>02 — Your Collection</span>
+        <h2>Saved Looks</h2>
+        <p>All your favourite combinations, collected in one place.</p>
+    </div>
+
+    <div class="saved-grid" id="savedLooks">
+        <p style="color:#81747a;font-size:13px;">Your saved outfits will appear here.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span>03 — Find Your Inspiration</span>
+        <h2>Behind the Look</h2>
+        <p>A little visual inspiration for your next outfit.</p>
+    </div>
+
+    <div class="inspiration-grid">
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Effortless Everyday</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=effortless%20everyday%20outfits" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Quiet Luxury</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=quiet%20luxury%20fashion" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+        <div class="inspiration-card">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85">
+            <div>
+                <h3>Street Style Energy</h3>
+                <a href="https://www.pinterest.com/search/pins/?q=street%20style%20outfit%20inspiration" target="_blank">EXPLORE ON PINTEREST ↗</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tip-box">
+        <h3>A Note From The Style Desk</h3>
+        <p>
+            Great style isn't about owning more clothes.
+            It's about discovering new ways to wear what you already love.
+            Experiment, mix things up and make every look your own.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <h2>THE LOOK EDIT</h2>
+    <p>Discover your style. Define your look. Make it yours.</p>
+</footer>
+
+<script>
+let outfit = {
+    top: "",
+    bottom: "",
+    shoes: "",
+    accessory: ""
+};
+
+let outfitColour = "#681f3d";
+
+function selectItem(category, name, element) {
+    outfit[category] = name;
+
+    const grid = element.parentElement;
+    grid.querySelectorAll(".style-item").forEach(item => {
+        item.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    const previewIds = {
+        top: "topPreview",
+        bottom: "bottomPreview",
+        shoes: "shoesPreview",
+        accessory: "accessoryPreview"
+    };
+
+    const preview = document.getElementById(previewIds[category]);
+    preview.textContent = name;
+    preview.classList.remove("empty");
+
+    preview.style.background = outfitColour;
+}
+
+function setPalette(colour) {
+    outfitColour = colour;
+
+    document.querySelectorAll(".preview-piece:not(.empty)").forEach(piece => {
+        piece.style.background = colour;
+    });
+}
+
+function saveLook() {
+    if (!outfit.top || !outfit.bottom || !outfit.shoes || !outfit.accessory) {
+        document.getElementById("message").textContent =
+            "Choose one item from every category before saving your look.";
+        return;
+    }
+
+    let saved = JSON.parse(localStorage.getItem("styleStudioLooks")) || [];
+
+    const newLook = {
+        ...outfit,
+        colour: outfitColour,
+        id: Date.now()
+    };
+
+    saved.push(newLook);
+
+    localStorage.setItem("styleStudioLooks", JSON.stringify(saved));
+
+    document.getElementById("message").textContent = "Your look has been saved! ♡";
+
+    renderSavedLooks();
+}
+
+function resetLook() {
+    outfit = {
+        top: "",
+        bottom: "",
+        shoes: "",
+        accessory: ""
+    };
+
+    document.querySelectorAll(".style-item").forEach(item => {
+        item.classList.remove("selected");
+    });
+
+    document.querySelectorAll(".preview-piece").forEach(piece => {
+        piece.classList.add("empty");
+    });
+
+    document.getElementById("topPreview").textContent = "Choose a top";
+    document.getElementById("bottomPreview").textContent = "Choose a bottom";
+    document.getElementById("shoesPreview").textContent = "Choose shoes";
+    document.getElementById("accessoryPreview").textContent = "Choose an accessory";
+
+    document.getElementById("message").textContent = "";
+}
+
+function renderSavedLooks() {
+    const saved = JSON.parse(localStorage.getItem("styleStudioLooks")) || [];
+    const container = document.getElementById("savedLooks");
+
+    if (saved.length === 0) {
+        container.innerHTML = '<p style="color:#81747a;font-size:13px;">Your saved outfits will appear here.</p>';
+        return;
+    }
+
+    container.innerHTML = saved.map((look, index) => `
+        <div class="saved-card">
+            <h4>Look No. ${index + 1}</h4>
+            <p style="font-size:12px;line-height:2;color:#665b61;">
+                <strong>Top:</strong> ${look.top}<br>
+                <strong>Bottom:</strong> ${look.bottom}<br>
+                <strong>Shoes:</strong> ${look.shoes}<br>
+                <strong>Accessory:</strong> ${look.accessory}
+            </p>
+
+            <div class="saved-colours">
+                <span style="background:${look.colour}"></span>
+                <span style="background:#e8d9d0"></span>
+                <span style="background:#292329"></span>
+            </div>
+
+            <button class="delete-btn" onclick="deleteLook(${look.id})">REMOVE LOOK</button>
+        </div>
+    `).join("");
+}
+
+function deleteLook(id) {
+    let saved = JSON.parse(localStorage.getItem("styleStudioLooks")) || [];
+    saved = saved.filter(look => look.id !== id);
+
+    localStorage.setItem("styleStudioLooks", JSON.stringify(saved));
+    renderSavedLooks();
+}
+
+renderSavedLooks();
+</script>
+
+</body>
+</html>
